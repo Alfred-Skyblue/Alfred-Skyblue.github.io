@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>apply、call和bind方法</title>
+    <url>/2020/02/16/apply%E3%80%81call%E5%92%8Cbind%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>@[toc]</p>
+<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
+<p>apply的使用语法：</p>
+<blockquote>
+<p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取按钮</span></span><br><span class="line">		<span class="keyword">var</span> btn=<span class="built_in">document</span>.querySelectorAll(<span class="string">".btn"</span>);</span><br><span class="line">		<span class="comment">// 使用apply方法,改变Array中forEach方法的指向,循环遍历解析按钮注册点击事件</span></span><br><span class="line">		<span class="built_in">Array</span>.prototype.forEach.apply(btn,[<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">			addEventListener(ele,<span class="string">"click"</span>,clickHandle);</span><br><span class="line">		&#125;]);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个函数</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);<span class="comment">//30男</span></span><br></pre></td></tr></table></figure>
+<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过apply方法来改变this的指向</p>
+<h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>call的使用语法：</p>
+<blockquote>
+<p>函数名字.call(对象,参数1,参数2,…);<br>方法名字.call(对象,参数1,参数2,…);<br>call方法是以字符串形式传递参数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取所有的点赞标签</span></span><br><span class="line"><span class="keyword">var</span> praise=<span class="built_in">document</span>.querySelectorAll(<span class="string">".praise"</span>);</span><br><span class="line"><span class="comment">// 使用call方法,改变Array中forEach方法的指向,遍历点赞标签，注册点击事件</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.forEach.call(praise,(<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">	addEventListener(ele,<span class="string">"click"</span>,praHandle);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.call(obj,<span class="number">10</span>,<span class="number">50</span>);<span class="comment">//60男</span></span><br></pre></td></tr></table></figure>
+<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过call方法来改变this的指向</p>
+<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><blockquote>
+<p>bind方法是复制的意思,参数可以在复制的时候传进去,也可以在复制之后调用的时候传入进去<br>apply和call是调用的时候改变this指向<br>bind方法,是赋值一份的时候,改变了this的指向</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 人的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 添加原型方法</span></span><br><span class="line">Person.prototype.play=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>+<span class="string">"====&gt;"</span>+<span class="keyword">this</span>.age);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 学生的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化对象</span></span><br><span class="line"><span class="keyword">var</span> per=<span class="keyword">new</span> Person(<span class="number">60</span>);</span><br><span class="line"><span class="keyword">var</span> stu=<span class="keyword">new</span> Student(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过bind方法赋值一份</span></span><br><span class="line"><span class="keyword">var</span> ff=per.play.bind(stu);</span><br><span class="line">ff();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>bind是用来复制一份</li>
+</ul>
+<p>使用的语法:</p>
+<blockquote>
+<p>函数名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个函数<br>方法名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个方法</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Vue生命周期详解</title>
+    <url>/2020/02/16/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
+<p><img src="vue1.jpg" alt="生命周期图"></p>
+<center><font color=#ccc>生命周期图</font> </center>
+
+<hr>
+<p><img src="vue2.jpg" alt=""></p>
+<ul>
+<li><p>beforeCreate(创建前)<br>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p>
+</li>
+<li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
+</li>
+<li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>
+</li>
+<li><p>mounted<br>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p>
+</li>
+<li><p>beforeUpdate<br>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
+</li>
+<li><p>updated(更新后)<br>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p>
+</li>
+<li><p>beforeDestrioy(销毁前)<br>在实例销毁之前调用，实例仍然完全可用，</p>
+</li>
+</ul>
+<ol>
+<li>这一步还可以用this来获取实例</li>
+<li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li>
+</ol>
+<ul>
+<li>destroyed(销毁后)<br>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</li>
+</ul>
+]]></content>
+      <categories>
+        <category>-Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>构造函数（第二节）</title>
     <url>/2020/02/15/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%88%E7%AC%AC%E4%BA%8C%E8%8A%82%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><pre><code>构造函数是一种特殊的函数，主要用来初始化对象，即为对
+    <content><![CDATA[<p>摘要内容</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><pre><code>构造函数是一种特殊的函数，主要用来初始化对象，即为对
 象成员变量赋初始值，它总与new一起使用。我们可以把对象
 中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</code></pre><a id="more"></a>
 <p>在 JS 中，使用构造函数时要注意以下两点：</p>
@@ -108,8 +182,11 @@
 </ol>
 ]]></content>
       <categories>
-        <category>ES6</category>
+        <category>JavaScript</category>
       </categories>
+      <tags>
+        <tag>构造函数</tag>
+      </tags>
   </entry>
   <entry>
     <title>hexo</title>
