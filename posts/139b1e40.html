@@ -461,23 +461,23 @@
 <blockquote>
 <p>JS设计之初为了实现简单继承，引入了prototype属性，也叫原型对象（显式原型）。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原型对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Animal.prototype) <span class="comment">//Object  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Object</span>.prototype) <span class="comment">// Object</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原型对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Animal.prototype) <span class="comment">//Object  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Object</span>.prototype) <span class="comment">// Object</span></span><br></pre></td></tr></table></figure></div>
 <p>可以看出，从本质上讲，prototype是一个普通对象，是函数对象的构造函数创建的一个实例。相当于在Animal创建的时候，自动创建了一个它的实例，并且把这个实例赋值给了prototype。</p>
 <p>但是存在一个特例Function， Function.prototype是原型对象，本质却是函数对象。作为一个函数对象，又没有prototype属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>.prototype) <span class="comment">// 特殊 Function  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>.prototype.prototype) <span class="comment">//undefined 函数对象却没有prototype属性</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>.prototype) <span class="comment">// 特殊 Function  </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>.prototype.prototype) <span class="comment">//undefined 函数对象却没有prototype属性</span></span><br></pre></td></tr></table></figure></div>
 
 <p><strong>proto属性</strong><br>所有的对象obj(null和undefined除外)都具有proto属性（隐式原型），proto属性在本质上为一个指针，指向创造obj对象的函数对象的prototype属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建构造函数</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">            <span class="keyword">this</span>.age= age;</span><br><span class="line">        &#125;</span><br><span class="line">        Animal.prototype = &#123;</span><br><span class="line">            alertName()&#123;</span><br><span class="line">                alert(<span class="keyword">this</span>.name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建实例</span></span><br><span class="line">        <span class="keyword">var</span> dog = <span class="keyword">new</span> Animal(<span class="string">"大黄"</span>);</span><br><span class="line">        dog .print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        dog.print();  <span class="comment">//大黄</span></span><br><span class="line">        dog.alertName();  <span class="comment">//大黄</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建构造函数</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">            <span class="keyword">this</span>.age= age;</span><br><span class="line">        &#125;</span><br><span class="line">        Animal.prototype = &#123;</span><br><span class="line">            alertName()&#123;</span><br><span class="line">                alert(<span class="keyword">this</span>.name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建实例</span></span><br><span class="line">        <span class="keyword">var</span> dog = <span class="keyword">new</span> Animal(<span class="string">"大黄"</span>);</span><br><span class="line">        dog .print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             alert(<span class="keyword">this</span>.name);</span><br><span class="line">        &#125;</span><br><span class="line">        dog.print();  <span class="comment">//大黄</span></span><br><span class="line">        dog.alertName();  <span class="comment">//大黄</span></span><br></pre></td></tr></table></figure></div>
 
 <p>print()方法是dog实例本身具有的方法，所以dog.print()输出“大黄”；alertName()不属于dog实例的方法，属于构造函数的方法，dog.alertName()也会输出“大黄”，是因为dog实例继承了构造函数的方法。</p>
 <p>实例dog的隐式原型指向它构造函数的显式原型，指向的意思是恒等于，即</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dog.__proto__ === Animal.prototype<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dog.__proto__ === Animal.prototype<span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
 
 <h2 id="构造器constructor"><a href="#构造器constructor" class="headerlink" title="构造器constructor"></a>构造器constructor</h2><p>构造器constructor就是用来构造函数对象的，constructor 属性返回对创建此对象的函数对象的引用。通俗了讲就是指向当前对象的爸爸</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.constructor===<span class="built_in">Function</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(a.prototype.constructor===a); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.constructor===<span class="built_in">Function</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(a.prototype.constructor===a); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></div>
 <p>函数a是由Function创造出来,那么它的constructor指向的Function,a.prototype是由new a()方式创造出来,那么a.prototype.constructor理应指向a。</p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>原型链是JS中实现继承的主要方法。其基本思想就是让一个引用类型继承另一个引用类型的属性和方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.animalType = <span class="string">"animal"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">Animal.prototype.getAnimalType = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.animalType ;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.Dogtype = <span class="string">"dog"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">Dog.prototype = <span class="keyword">new</span> Animal();  </span><br><span class="line"></span><br><span class="line">Dog.prototype.getDogType = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.Dogtype ;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dahuang = <span class="keyword">new</span> Dog();</span><br><span class="line"></span><br><span class="line">alert(dahuang.getAnimalType ());<span class="comment">// animal</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.animalType = <span class="string">"animal"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">Animal.prototype.getAnimalType = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.animalType ;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.Dogtype = <span class="string">"dog"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">Dog.prototype = <span class="keyword">new</span> Animal();  </span><br><span class="line"></span><br><span class="line">Dog.prototype.getDogType = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.Dogtype ;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dahuang = <span class="keyword">new</span> Dog();</span><br><span class="line"></span><br><span class="line">alert(dahuang.getAnimalType ());<span class="comment">// animal</span></span><br></pre></td></tr></table></figure></div>
 
 <p>dahuang.getAnimalType ()打印结果为animal，dahuang自身没有getAnimalType ()方法，那么就会去它的proto(即它的构造函数的prototype)中寻找，发现Dog中也没有，于是顺着proto再往上找，在<code>Animal.prototype.getAnimalType</code>找到，返回结果 。</p>
 <p><code>如果Animal中还是没有，就接着往上找，一直到Object.prototype原型对象终止</code></p>
@@ -489,18 +489,18 @@
 <p><code>当然原型链实现继承也会存在一些问题，最主要的问题来自包含引用类型的原型。其次就是在创建子类型的实例时，不能向超类型的构造函数中传递参数。</code></p>
 <h2 id="构造函数、实例对象、原型对象三者之间的关系"><a href="#构造函数、实例对象、原型对象三者之间的关系" class="headerlink" title="构造函数、实例对象、原型对象三者之间的关系"></a>构造函数、实例对象、原型对象三者之间的关系</h2><p><img src="yuanxing.webp" alt="构造函数、实例对象、原型三者的关系"></p>
 <p>任何函数都具有一个 prototype 属性，该属性是一个对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(F.prototype) <span class="comment">// =&gt; object</span></span><br><span class="line"></span><br><span class="line">F.prototype.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hi!'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(F.prototype) <span class="comment">// =&gt; object</span></span><br><span class="line"></span><br><span class="line">F.prototype.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hi!'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <p>构造函数的 <code>prototype</code> 对象默认都有一个 <code>constructor</code> 属性，指向 <code>prototype</code> 对象所在函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(F.constructor === F) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(F.constructor === F) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure></div>
 
 <p>通过构造函数得到的实例对象内部会包含一个指向构造函数的 <code>prototype</code> 对象的指针 <code>__proto__</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> F()</span><br><span class="line"><span class="built_in">console</span>.log(instance.__proto__ === F.prototype) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> F()</span><br><span class="line"><span class="built_in">console</span>.log(instance.__proto__ === F.prototype) <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure></div>
 
 
 <p><code>__proto__</code> 是非标准属性。</p>
 <p>实例对象可以直接访问原型对象成员。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instance.sayHi() <span class="comment">// =&gt; hi!</span></span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instance.sayHi() <span class="comment">// =&gt; hi!</span></span><br></pre></td></tr></table></figure></div>
 
 
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
@@ -628,7 +628,6 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-
   <aside id="sidebar" class="sidebar">
     
       <div id="sidebar-dimmer"></div>
@@ -757,8 +756,7 @@
                   </li>
                 
               </ul>
-			  
-<div id="days"></div>
+			   <div id="days"></div>
 <script>
 function show_date_time(){
     window.setTimeout("show_date_time()", 1000);
@@ -785,11 +783,6 @@ function setzero(i) {
 }
 show_date_time();
 </script>
-
-
-
-
-
             </div>
           
 
@@ -823,6 +816,271 @@ show_date_time();
           
         </div>
       
+	<div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
 
     </div>
   </aside>
@@ -1404,5 +1662,13 @@ show_date_time();
   <!-- 代码块复制功能 -->
   <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
   <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  
+  <script src="/live2d-widget/autoload.js"></script>
+  <!-- 鼠标点击样式 -->
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
 </body>
 </html>

@@ -470,8 +470,8 @@
 <h3 id="成员"><a href="#成员" class="headerlink" title="成员"></a>成员</h3><p>JavaScript的构造函数中可以添加一些成员，可以在构造函数本身上添加，也可以在构造函数内部的this上添加。通过这两种方式添加的成员，就分别称为==静态成员==和==实例成员==。</p>
 <ul>
 <li>静态成员：在构造函数本身上添加的成员称为静态成员，只能由构造函数本身来访问 。</li>
-<li>实例成员：在构造函数内部创建的对象成员称为实例成员，只能由实例化的对象来访问。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Star(name,age)&#123;</span><br><span class="line">    this.name&#x3D;name</span><br><span class="line">    this.age&#x3D;age</span><br><span class="line">    this.sing&#x3D;function()&#123;</span><br><span class="line">        console.log(&#39;SSS&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var XXX&#x3D;new Star(&quot;XX&quot;,&quot;YY&quot;)</span><br><span class="line">&#x2F;&#x2F;1.实例成员就是构造函数内部通过this添加的成员</span><br><span class="line">name age sing 就是实例成员</span><br><span class="line">&#x2F;&#x2F; 实例成员只能通过实例化的对象来访问</span><br><span class="line">console.log(XXX.name);</span><br><span class="line">XXX.sing();</span><br><span class="line">&#x2F;&#x2F; console.log(Star.name);  </span><br><span class="line">&#x2F;&#x2F;不可以通过构造函数来访问实例成员</span><br><span class="line">&#x2F;&#x2F; 2. 静态成员 在构造函数本身上添加的成员  sex 就是静态成员</span><br><span class="line">Star.sex &#x3D; &#39;男&#39;;</span><br><span class="line">&#x2F;&#x2F; 静态成员只能通过构造函数来访问</span><br><span class="line">console.log(Star.sex);</span><br><span class="line">console.log(ldh.sex); &#x2F;&#x2F; 不能通过对象来访问</span><br></pre></td></tr></table></figure>
-<h3 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h3>存在浪费内存的问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Star(uname, age) &#123;</span><br><span class="line">    this.uname &#x3D; uname;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sing &#x3D; function() &#123;</span><br><span class="line">        console.log(&#39;我会唱歌&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br></pre></td></tr></table></figure>
+<li>实例成员：在构造函数内部创建的对象成员称为实例成员，只能由实例化的对象来访问。<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function Star(name,age)&#123;</span><br><span class="line">    this.name&#x3D;name</span><br><span class="line">    this.age&#x3D;age</span><br><span class="line">    this.sing&#x3D;function()&#123;</span><br><span class="line">        console.log(&#39;SSS&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var XXX&#x3D;new Star(&quot;XX&quot;,&quot;YY&quot;)</span><br><span class="line">&#x2F;&#x2F;1.实例成员就是构造函数内部通过this添加的成员</span><br><span class="line">name age sing 就是实例成员</span><br><span class="line">&#x2F;&#x2F; 实例成员只能通过实例化的对象来访问</span><br><span class="line">console.log(XXX.name);</span><br><span class="line">XXX.sing();</span><br><span class="line">&#x2F;&#x2F; console.log(Star.name);  </span><br><span class="line">&#x2F;&#x2F;不可以通过构造函数来访问实例成员</span><br><span class="line">&#x2F;&#x2F; 2. 静态成员 在构造函数本身上添加的成员  sex 就是静态成员</span><br><span class="line">Star.sex &#x3D; &#39;男&#39;;</span><br><span class="line">&#x2F;&#x2F; 静态成员只能通过构造函数来访问</span><br><span class="line">console.log(Star.sex);</span><br><span class="line">console.log(ldh.sex); &#x2F;&#x2F; 不能通过对象来访问</span><br></pre></td></tr></table></figure></div>
+<h3 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h3>存在浪费内存的问题<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Star(uname, age) &#123;</span><br><span class="line">    this.uname &#x3D; uname;</span><br><span class="line">    this.age &#x3D; age;</span><br><span class="line">    this.sing &#x3D; function() &#123;</span><br><span class="line">        console.log(&#39;我会唱歌&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br></pre></td></tr></table></figure></div>
 <img src="https://github.com/BXsweetheart/youdaoNotes/blob/master/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98.png?raw=true" alt="image"></li>
 </ul>
 <h3 id="构造函数原型-prototype"><a href="#构造函数原型-prototype" class="headerlink" title="构造函数原型 prototype"></a>构造函数原型 prototype</h3><pre><code>构造函数通过原型分配的函数是所有对象所共享的。</code></pre><ol>
@@ -487,7 +487,7 @@
 <li>原型的作用是什么 ？<br>共享方法。</li>
 </ol>
 <h3 id="对象原型-proto"><a href="#对象原型-proto" class="headerlink" title="对象原型  __ proto __"></a>对象原型  __ proto __</h3><p>对象都会有一个属性 __ proto __ 指向构造函数的 prototype 原型对象，之所以我们对象可以使用构造函数 prototype 原型对象的属性和方法，就是因为对象有 __ proto __ 原型的存在。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        function Star(uname, age) &#123;</span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Star.prototype.sing &#x3D; function() &#123;</span><br><span class="line">            console.log(&#39;我会唱歌&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">        var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br><span class="line">        ldh.sing();</span><br><span class="line">        </span><br><span class="line">        console.log(ldh); &#x2F;&#x2F; 对象身上系统自己添加一个 </span><br><span class="line">        __proto__ 指向我们构造函数的原型对象 prototype</span><br><span class="line">        </span><br><span class="line">        console.log(ldh.__proto__ &#x3D;&#x3D;&#x3D; Star.prototype);</span><br><span class="line">        &#x2F;&#x2F; 方法的查找规则: 首先先看ldh 对象身上是否有 </span><br><span class="line">        sing 方法,如果有就执行这个对象上的sing</span><br><span class="line">        &#x2F;&#x2F; 如果没有sing这个方法,因为有__proto__的存在,就</span><br><span class="line">        去构造函数原型对象prototype身上去查找sing这个方法</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        function Star(uname, age) &#123;</span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Star.prototype.sing &#x3D; function() &#123;</span><br><span class="line">            console.log(&#39;我会唱歌&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">        var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br><span class="line">        ldh.sing();</span><br><span class="line">        </span><br><span class="line">        console.log(ldh); &#x2F;&#x2F; 对象身上系统自己添加一个 </span><br><span class="line">        __proto__ 指向我们构造函数的原型对象 prototype</span><br><span class="line">        </span><br><span class="line">        console.log(ldh.__proto__ &#x3D;&#x3D;&#x3D; Star.prototype);</span><br><span class="line">        &#x2F;&#x2F; 方法的查找规则: 首先先看ldh 对象身上是否有 </span><br><span class="line">        sing 方法,如果有就执行这个对象上的sing</span><br><span class="line">        &#x2F;&#x2F; 如果没有sing这个方法,因为有__proto__的存在,就</span><br><span class="line">        去构造函数原型对象prototype身上去查找sing这个方法</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 <p><img src="https://github.com/BXsweetheart/youdaoNotes/blob/master/proto.png?raw=true" alt="image"></p>
 <ul>
 <li><strong>proto</strong>对象原型和原型对象 prototype 是等价的</li>
@@ -502,7 +502,7 @@
 </li>
 </ol>
 <h3 id="构造函数、实例、原型对象三者之间的关系"><a href="#构造函数、实例、原型对象三者之间的关系" class="headerlink" title="构造函数、实例、原型对象三者之间的关系"></a>构造函数、实例、原型对象三者之间的关系</h3><p><img src="https://github.com/BXsweetheart/youdaoNotes/blob/master/relationship.png?raw=true" alt="image"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       function Star(uname, age) &#123;</span><br><span class="line">           this.uname &#x3D; uname;</span><br><span class="line">           this.age &#x3D; age;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; 很多情况下,我们需要手动的利用constructor </span><br><span class="line">       这个属性指回原来的构造函数</span><br><span class="line">       &#x2F;&#x2F; Star.prototype.sing &#x3D; function() &#123;</span><br><span class="line">       &#x2F;&#x2F;     console.log(&#39;我会唱歌&#39;);</span><br><span class="line">       &#x2F;&#x2F; &#125;;</span><br><span class="line">       &#x2F;&#x2F; Star.prototype.movie &#x3D; function() &#123;</span><br><span class="line">       &#x2F;&#x2F;     console.log(&#39;我会演电影&#39;);</span><br><span class="line">       &#x2F;&#x2F; &#125;</span><br><span class="line">       Star.prototype &#x3D; &#123;</span><br><span class="line">           &#x2F;&#x2F; 如果我们修改了原来的原型对象,给原型对象赋</span><br><span class="line">           值的是一个对象,则必须手动的利用constructor指</span><br><span class="line">           回原来的构造函数</span><br><span class="line">           constructor: Star,</span><br><span class="line">           sing: function() &#123;</span><br><span class="line">               console.log(&#39;我会唱歌&#39;);</span><br><span class="line">           &#125;,</span><br><span class="line">           movie: function() &#123;</span><br><span class="line">               console.log(&#39;我会演电影&#39;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">       var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br><span class="line">       console.log(Star.prototype);</span><br><span class="line">       console.log(ldh.__proto__);</span><br><span class="line">       console.log(Star.prototype.constructor);</span><br><span class="line">       console.log(ldh.__proto__.constructor);</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       function Star(uname, age) &#123;</span><br><span class="line">           this.uname &#x3D; uname;</span><br><span class="line">           this.age &#x3D; age;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; 很多情况下,我们需要手动的利用constructor </span><br><span class="line">       这个属性指回原来的构造函数</span><br><span class="line">       &#x2F;&#x2F; Star.prototype.sing &#x3D; function() &#123;</span><br><span class="line">       &#x2F;&#x2F;     console.log(&#39;我会唱歌&#39;);</span><br><span class="line">       &#x2F;&#x2F; &#125;;</span><br><span class="line">       &#x2F;&#x2F; Star.prototype.movie &#x3D; function() &#123;</span><br><span class="line">       &#x2F;&#x2F;     console.log(&#39;我会演电影&#39;);</span><br><span class="line">       &#x2F;&#x2F; &#125;</span><br><span class="line">       Star.prototype &#x3D; &#123;</span><br><span class="line">           &#x2F;&#x2F; 如果我们修改了原来的原型对象,给原型对象赋</span><br><span class="line">           值的是一个对象,则必须手动的利用constructor指</span><br><span class="line">           回原来的构造函数</span><br><span class="line">           constructor: Star,</span><br><span class="line">           sing: function() &#123;</span><br><span class="line">               console.log(&#39;我会唱歌&#39;);</span><br><span class="line">           &#125;,</span><br><span class="line">           movie: function() &#123;</span><br><span class="line">               console.log(&#39;我会演电影&#39;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">       var zxy &#x3D; new Star(&#39;张学友&#39;, 19);</span><br><span class="line">       console.log(Star.prototype);</span><br><span class="line">       console.log(ldh.__proto__);</span><br><span class="line">       console.log(Star.prototype.constructor);</span><br><span class="line">       console.log(ldh.__proto__.constructor);</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="https://github.com/BXsweetheart/youdaoNotes/blob/master/%E5%8E%9F%E5%9E%8B%E9%93%BE.png?raw=true" alt="image"></p>
 <ol>
 <li><p>只要是对象就有<strong>proto</strong> 原型, 指向原型对象</p>
@@ -524,21 +524,21 @@
 <li>原型对象里面放的是方法，这个方法里面的this 指向的是 这个方法的调用者，也就是这个实例对象。</li>
 </ul>
 <h2 id="扩展内置对象"><a href="#扩展内置对象" class="headerlink" title="扩展内置对象"></a>扩展内置对象</h2><p>可以通过原型对象，对原来的内置对象进行扩展自定义的方法。比如给数组增加自定义求偶数和的功能。（原型对象的应用）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum&#x3D;function()&#123;</span><br><span class="line">        var sum&#x3D;0</span><br><span class="line">        for(i&#x3D;0;i&lt;this.length;i++)&#123;</span><br><span class="line">            sum +&#x3D; this[i]</span><br><span class="line">        &#125;</span><br><span class="line">        return sum</span><br><span class="line">    &#125;</span><br><span class="line">    var arr&#x3D;[1,2,3]</span><br><span class="line">    console.log(arr.sum())</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.sum&#x3D;function()&#123;</span><br><span class="line">        var sum&#x3D;0</span><br><span class="line">        for(i&#x3D;0;i&lt;this.length;i++)&#123;</span><br><span class="line">            sum +&#x3D; this[i]</span><br><span class="line">        &#125;</span><br><span class="line">        return sum</span><br><span class="line">    &#125;</span><br><span class="line">    var arr&#x3D;[1,2,3]</span><br><span class="line">    console.log(arr.sum())</span><br></pre></td></tr></table></figure></div>
 <p><strong>注意</strong><br>数组和字符串==内置对象==不能以对象的形式追加，因为会覆盖原本的内置方法——Array.prototype = {} ，只能使用Array.prototype.xxx = function(){} 的方式。</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES6之前并没有给我们提供extends继承。我们可以通过构造函数+原型对象模拟实现继承，被称为组合继承。</p>
 <h3 id="call"><a href="#call" class="headerlink" title="call()"></a>call()</h3><p>调用这个函数, 并且修改函数运行时的 this 指向</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li><p>thisArg：当前调用函数 this 的指向对象。</p>
 </li>
 <li><p>arg1，arg2：传递的其他参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function fn(x,y,z)&#123;</span><br><span class="line">        console.log(&quot;deadly sleepy&quot;)</span><br><span class="line">        console.log(this)</span><br><span class="line">        console.log(x+y+z)</span><br><span class="line">    &#125;</span><br><span class="line">    var o&#x3D;&#123;</span><br><span class="line">        think:&quot;want to sleep&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var postgraduate&#x3D;&quot;postgraduate&quot;;</span><br><span class="line">    var is&#x3D;&quot;is&quot;;</span><br><span class="line">    var important&#x3D;&quot;important&quot;</span><br><span class="line">    fn.call()</span><br><span class="line">    fn.call(o)</span><br><span class="line">    fn.call(o,postgraduate,is,important)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function fn(x,y,z)&#123;</span><br><span class="line">        console.log(&quot;deadly sleepy&quot;)</span><br><span class="line">        console.log(this)</span><br><span class="line">        console.log(x+y+z)</span><br><span class="line">    &#125;</span><br><span class="line">    var o&#x3D;&#123;</span><br><span class="line">        think:&quot;want to sleep&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var postgraduate&#x3D;&quot;postgraduate&quot;;</span><br><span class="line">    var is&#x3D;&quot;is&quot;;</span><br><span class="line">    var important&#x3D;&quot;important&quot;</span><br><span class="line">    fn.call()</span><br><span class="line">    fn.call(o)</span><br><span class="line">    fn.call(o,postgraduate,is,important)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 <h3 id="借用构造函数继承父类型属性"><a href="#借用构造函数继承父类型属性" class="headerlink" title="借用构造函数继承父类型属性"></a>借用构造函数继承父类型属性</h3><p>核心原理：<br>通过 call() 把父类型的 this 指向子类型的 this ，这样就可以实现子类型继承父类型的属性。</p>
 <p>  extends属于类的继承，写法是class Son extends Father。<br>  这里是函数<br>  super()是访问和调用父构造函数的方法<br>  call()是继承父构造函数的类和方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">function Father(name, age, sex) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">  this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类</span><br><span class="line">function Son(name, age, sex, score) &#123;</span><br><span class="line">  Father.call(this, name, age, sex);  &#x2F;&#x2F; 此时父类的 this </span><br><span class="line">  指向子类的 this，同时调用这个函数</span><br><span class="line">  this.score &#x3D; score;</span><br><span class="line">&#125;</span><br><span class="line">var s1 &#x3D; new Son(&#39;zs&#39;, 18, &#39;男&#39;, 100);</span><br><span class="line">console.dir(s1);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">function Father(name, age, sex) &#123;</span><br><span class="line">  this.name &#x3D; name;</span><br><span class="line">  this.age &#x3D; age;</span><br><span class="line">  this.sex &#x3D; sex;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类</span><br><span class="line">function Son(name, age, sex, score) &#123;</span><br><span class="line">  Father.call(this, name, age, sex);  &#x2F;&#x2F; 此时父类的 this </span><br><span class="line">  指向子类的 this，同时调用这个函数</span><br><span class="line">  this.score &#x3D; score;</span><br><span class="line">&#125;</span><br><span class="line">var s1 &#x3D; new Son(&#39;zs&#39;, 18, &#39;男&#39;, 100);</span><br><span class="line">console.dir(s1);</span><br></pre></td></tr></table></figure></div>
 <p>子类构造函数中通过call将父类构造函数this指向自身，达到继承父类属性目的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F; 借用父构造函数继承属性</span><br><span class="line">       &#x2F;&#x2F; 1. 父构造函数</span><br><span class="line">       function Father(uname, age) &#123;</span><br><span class="line">           &#x2F;&#x2F; this 指向父构造函数的对象实例</span><br><span class="line">           this.uname &#x3D; uname;</span><br><span class="line">           this.age &#x3D; age;</span><br><span class="line">       &#125;</span><br><span class="line">       Father.prototype.money &#x3D; function() &#123;</span><br><span class="line">           console.log(100000);</span><br><span class="line"></span><br><span class="line">       &#125;;</span><br><span class="line">       &#x2F;&#x2F; 2 .子构造函数 </span><br><span class="line">       function Son(uname, age, score) &#123;</span><br><span class="line">           &#x2F;&#x2F; this 指向子构造函数的对象实例</span><br><span class="line">           Father.call(this, uname, age);</span><br><span class="line">           this.score &#x3D; score;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; Son.prototype &#x3D; Father.prototype;  </span><br><span class="line">      &#x2F;&#x2F;这样直接赋值会有问题,如果修改了子原型对象,父原型</span><br><span class="line">      &#x2F;&#x2F;对象也会跟着一起变化</span><br><span class="line">       Son.prototype &#x3D; new Father();</span><br><span class="line">       &#x2F;&#x2F; 如果利用对象的形式修改了原型对象,别忘了利用</span><br><span class="line">       &#x2F;&#x2F;constructor 指回原来的构造函数</span><br><span class="line">       Son.prototype.constructor &#x3D; Son;</span><br><span class="line">       &#x2F;&#x2F; 这个是子构造函数专门的方法,原型链查找</span><br><span class="line">       Son.prototype.exam &#x3D; function() &#123;</span><br><span class="line">           console.log(&#39;孩子要考试&#39;);</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       var son &#x3D; new Son(&#39;刘德华&#39;, 18, 100);</span><br><span class="line">       console.log(son);</span><br><span class="line">       console.log(Father.prototype);</span><br><span class="line">       console.log(Son.prototype.constructor);</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F; 借用父构造函数继承属性</span><br><span class="line">       &#x2F;&#x2F; 1. 父构造函数</span><br><span class="line">       function Father(uname, age) &#123;</span><br><span class="line">           &#x2F;&#x2F; this 指向父构造函数的对象实例</span><br><span class="line">           this.uname &#x3D; uname;</span><br><span class="line">           this.age &#x3D; age;</span><br><span class="line">       &#125;</span><br><span class="line">       Father.prototype.money &#x3D; function() &#123;</span><br><span class="line">           console.log(100000);</span><br><span class="line"></span><br><span class="line">       &#125;;</span><br><span class="line">       &#x2F;&#x2F; 2 .子构造函数 </span><br><span class="line">       function Son(uname, age, score) &#123;</span><br><span class="line">           &#x2F;&#x2F; this 指向子构造函数的对象实例</span><br><span class="line">           Father.call(this, uname, age);</span><br><span class="line">           this.score &#x3D; score;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; Son.prototype &#x3D; Father.prototype;  </span><br><span class="line">      &#x2F;&#x2F;这样直接赋值会有问题,如果修改了子原型对象,父原型</span><br><span class="line">      &#x2F;&#x2F;对象也会跟着一起变化</span><br><span class="line">       Son.prototype &#x3D; new Father();</span><br><span class="line">       &#x2F;&#x2F; 如果利用对象的形式修改了原型对象,别忘了利用</span><br><span class="line">       &#x2F;&#x2F;constructor 指回原来的构造函数</span><br><span class="line">       Son.prototype.constructor &#x3D; Son;</span><br><span class="line">       &#x2F;&#x2F; 这个是子构造函数专门的方法,原型链查找</span><br><span class="line">       Son.prototype.exam &#x3D; function() &#123;</span><br><span class="line">           console.log(&#39;孩子要考试&#39;);</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       var son &#x3D; new Son(&#39;刘德华&#39;, 18, 100);</span><br><span class="line">       console.log(son);</span><br><span class="line">       console.log(Father.prototype);</span><br><span class="line">       console.log(Son.prototype.constructor);</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 <p>一般情况下，对象的方法都在构造函数的原型对象中设置，通过构造函数无法继承父类方法。<br>核心原理： </p>
 </li>
 <li><p>将子类所共享的方法提取出来，让子类的 prototype 原型对象 = new 父类()  </p>
@@ -679,7 +679,6 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-
   <aside id="sidebar" class="sidebar">
     
       <div id="sidebar-dimmer"></div>
@@ -808,8 +807,7 @@
                   </li>
                 
               </ul>
-			  
-<div id="days"></div>
+			   <div id="days"></div>
 <script>
 function show_date_time(){
     window.setTimeout("show_date_time()", 1000);
@@ -836,11 +834,6 @@ function setzero(i) {
 }
 show_date_time();
 </script>
-
-
-
-
-
             </div>
           
 
@@ -874,6 +867,271 @@ show_date_time();
           
         </div>
       
+	<div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
 
     </div>
   </aside>
@@ -1455,5 +1713,13 @@ show_date_time();
   <!-- 代码块复制功能 -->
   <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
   <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  
+  <script src="/live2d-widget/autoload.js"></script>
+  <!-- 鼠标点击样式 -->
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
 </body>
 </html>

@@ -354,7 +354,7 @@
 <h3 id="类-constructor-构造函数"><a href="#类-constructor-构造函数" class="headerlink" title="类 constructor 构造函数"></a>类 constructor 构造函数</h3><pre><code>constructor()方法是类的构造函数(默认方法)，用于传递参
 数，返回实例对象，通过new命令生成对象实例时，自动调用
 该方法。
-如果没有显示定义，类内部会自动给我们创建一个constructor() </code></pre><h4 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 1. 创建一个class，创建一个“明星”类--&gt;</span><br><span class="line">class Star&#123;</span><br><span class="line">    constructor(uname)&#123;</span><br><span class="line">        this.uname &#x2F;&#x2F;指向创建的实例</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> 2.利用类创建对象 new</span><br><span class="line"> new Star()  &#x2F;&#x2F;只要加了new，自动调用constructor</span><br></pre></td></tr></table></figure>
+如果没有显示定义，类内部会自动给我们创建一个constructor() </code></pre><h4 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h4><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 1. 创建一个class，创建一个“明星”类--&gt;</span><br><span class="line">class Star&#123;</span><br><span class="line">    constructor(uname)&#123;</span><br><span class="line">        this.uname &#x2F;&#x2F;指向创建的实例</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> 2.利用类创建对象 new</span><br><span class="line"> new Star()  &#x2F;&#x2F;只要加了new，自动调用constructor</span><br></pre></td></tr></table></figure></div>
 <ol>
 <li>通过class关键字创建类，类名习惯性定义首字母大写</li>
 <li>类里面有个constructor()函数，可以接受传过来的参数，同时返回实例对象。</li>
@@ -362,24 +362,24 @@
 <li>生成实例new不能省略。</li>
 <li>最后注意语法规范，创建类时，类名后面不要加小括号；生成实例，类名后面加小括号，构造函数不需要加function。 </li>
 </ol>
-<h3 id="类添加方法"><a href="#类添加方法" class="headerlink" title="类添加方法"></a>类添加方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 1. 创建类 class  创建一个 明星类</span><br><span class="line">    class Star &#123;</span><br><span class="line">        &#x2F;&#x2F; 类的共有属性放到 constructor 里面</span><br><span class="line">        constructor(uname, age) &#123;</span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">        &#125;</span><br><span class="line">        sing(song) &#123;</span><br><span class="line">            &#x2F;&#x2F; console.log(&#39;我唱歌&#39;);</span><br><span class="line">            console.log(this.uname + song);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 2. 利用类创建对象 new</span><br><span class="line">    var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">    var zxy &#x3D; new Star(&#39;张学友&#39;, 20);</span><br><span class="line">    console.log(ldh);</span><br><span class="line">    console.log(zxy);</span><br><span class="line">    &#x2F;&#x2F; (1) 我们类里面所有的函数不需要写function </span><br><span class="line">    &#x2F;&#x2F; (2) 多个函数方法之间不需要添加逗号分隔</span><br><span class="line">    ldh.sing(&#39;冰雨&#39;);</span><br><span class="line">    zxy.sing(&#39;李香兰&#39;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="类添加方法"><a href="#类添加方法" class="headerlink" title="类添加方法"></a>类添加方法</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 1. 创建类 class  创建一个 明星类</span><br><span class="line">    class Star &#123;</span><br><span class="line">        &#x2F;&#x2F; 类的共有属性放到 constructor 里面</span><br><span class="line">        constructor(uname, age) &#123;</span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">        &#125;</span><br><span class="line">        sing(song) &#123;</span><br><span class="line">            &#x2F;&#x2F; console.log(&#39;我唱歌&#39;);</span><br><span class="line">            console.log(this.uname + song);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 2. 利用类创建对象 new</span><br><span class="line">    var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">    var zxy &#x3D; new Star(&#39;张学友&#39;, 20);</span><br><span class="line">    console.log(ldh);</span><br><span class="line">    console.log(zxy);</span><br><span class="line">    &#x2F;&#x2F; (1) 我们类里面所有的函数不需要写function </span><br><span class="line">    &#x2F;&#x2F; (2) 多个函数方法之间不需要添加逗号分隔</span><br><span class="line">    ldh.sing(&#39;冰雨&#39;);</span><br><span class="line">    zxy.sing(&#39;李香兰&#39;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 <h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>子类通过==extends==可以继承父类的一些属性和方法。  </p>
 <p><strong>注意</strong>    </p>
 <pre><code>继承中属性或者方法的查找原则：就近原则。        
 继承中，如果实例化子类输出一个方法，先看子类有没有这
 个方法，如果有就先执行子类的；如果子类中没，就去父类
-中查找，如果有，就执行父类中的这个方法（就近原则）。</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Father&#123;   &#x2F;&#x2F; 父类</span><br><span class="line">    conostrctor()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    money()&#123;</span><br><span class="line">        console.log(100)</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">class  Son extends Father &#123;  &#x2F;&#x2F; 子类继承父类</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">var son&#x3D;new Son();</span><br><span class="line">son.money()</span><br></pre></td></tr></table></figure>
+中查找，如果有，就执行父类中的这个方法（就近原则）。</code></pre><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Father&#123;   &#x2F;&#x2F; 父类</span><br><span class="line">    conostrctor()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    money()&#123;</span><br><span class="line">        console.log(100)</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">class  Son extends Father &#123;  &#x2F;&#x2F; 子类继承父类</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">var son&#x3D;new Son();</span><br><span class="line">son.money()</span><br></pre></td></tr></table></figure></div>
 <h3 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h3><p>super 关键字用于访问和调用对象父类上的函数。可以调用父类的构造函数，也可以调用父类的普通函数。</p>
 <p><strong>注意</strong><br>子类在构造函数中使用super, 必须放到 this 前面(必须先调用父类的构造方法,在使用子类构造方法)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Father &#123;</span><br><span class="line">    constructor(x, y) &#123;</span><br><span class="line">        this.x &#x3D; x;</span><br><span class="line">        this.y &#x3D; y;</span><br><span class="line">    &#125;</span><br><span class="line">    sum() &#123;</span><br><span class="line">        console.log(this.x + this.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Son extends Father &#123;</span><br><span class="line">    constructor(x, y) &#123;</span><br><span class="line">        super(x, y); &#x2F;&#x2F;调用了父类中的构造函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var son &#x3D; new Son(1, 2);</span><br><span class="line">var son1 &#x3D; new Son(11, 22);</span><br><span class="line">son.sum();</span><br><span class="line">son1.sum();</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Father &#123;</span><br><span class="line">    constructor(x, y) &#123;</span><br><span class="line">        this.x &#x3D; x;</span><br><span class="line">        this.y &#x3D; y;</span><br><span class="line">    &#125;</span><br><span class="line">    sum() &#123;</span><br><span class="line">        console.log(this.x + this.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Son extends Father &#123;</span><br><span class="line">    constructor(x, y) &#123;</span><br><span class="line">        super(x, y); &#x2F;&#x2F;调用了父类中的构造函数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var son &#x3D; new Son(1, 2);</span><br><span class="line">var son1 &#x3D; new Son(11, 22);</span><br><span class="line">son.sum();</span><br><span class="line">son1.sum();</span><br></pre></td></tr></table></figure></div>
 <p>super必须放到this前面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F; 父类有加法方法</span><br><span class="line">       class Father &#123;</span><br><span class="line">           constructor(x, y) &#123;</span><br><span class="line">               this.x &#x3D; x;</span><br><span class="line">               this.y &#x3D; y;</span><br><span class="line">           &#125;</span><br><span class="line">           sum() &#123;</span><br><span class="line">               console.log(this.x + this.y);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; 子类继承父类加法方法 同时 扩展减法方法</span><br><span class="line">       class Son extends Father &#123;</span><br><span class="line">           constructor(x, y) &#123;</span><br><span class="line">               &#x2F;&#x2F; 利用super 调用父类的构造函数</span><br><span class="line">               &#x2F;&#x2F; super 必须在子类this之前调用</span><br><span class="line">               super(x, y);</span><br><span class="line">               this.x &#x3D; x;</span><br><span class="line">               this.y &#x3D; y;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">           subtract() &#123;</span><br><span class="line">               console.log(this.x - this.y);</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       var son &#x3D; new Son(5, 3);</span><br><span class="line">       son.subtract();</span><br><span class="line">       son.sum();</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">       &#x2F;&#x2F; 父类有加法方法</span><br><span class="line">       class Father &#123;</span><br><span class="line">           constructor(x, y) &#123;</span><br><span class="line">               this.x &#x3D; x;</span><br><span class="line">               this.y &#x3D; y;</span><br><span class="line">           &#125;</span><br><span class="line">           sum() &#123;</span><br><span class="line">               console.log(this.x + this.y);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       &#x2F;&#x2F; 子类继承父类加法方法 同时 扩展减法方法</span><br><span class="line">       class Son extends Father &#123;</span><br><span class="line">           constructor(x, y) &#123;</span><br><span class="line">               &#x2F;&#x2F; 利用super 调用父类的构造函数</span><br><span class="line">               &#x2F;&#x2F; super 必须在子类this之前调用</span><br><span class="line">               super(x, y);</span><br><span class="line">               this.x &#x3D; x;</span><br><span class="line">               this.y &#x3D; y;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">           subtract() &#123;</span><br><span class="line">               console.log(this.x - this.y);</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       var son &#x3D; new Son(5, 3);</span><br><span class="line">       son.subtract();</span><br><span class="line">       son.sum();</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="使用类的注意事项"><a href="#使用类的注意事项" class="headerlink" title="使用类的注意事项"></a>使用类的注意事项</h3><ul>
 <li>在 ES6 中类没有变量提升，所以必须先定义类，才能通过类实例化对象。</li>
 <li>类里面的共有属性和方法一定要加this使用。</li>
 <li>类里面的this指向问题：<ul>
-<li>constructor 里面的this指向实例对象，方法里面的this 指向这个方法的调用者。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var that;</span><br><span class="line">    var _that;</span><br><span class="line">    class Star &#123;</span><br><span class="line">        constructor(uname, age) &#123;</span><br><span class="line">            &#x2F;&#x2F; constructor 里面的this 指向的是 创建的实例对象</span><br><span class="line">            that &#x3D; this;</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">            &#x2F;&#x2F; this.sing();</span><br><span class="line">            this.btn &#x3D; document.querySelector(&#39;button&#39;);</span><br><span class="line">            this.btn.onclick &#x3D; this.sing;</span><br><span class="line">        &#125;</span><br><span class="line">        sing() &#123;</span><br><span class="line">            &#x2F;&#x2F; 这个sing方法里面的this 指向的是 btn </span><br><span class="line">            这个按钮,因为这个按钮调用了这个函数</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">            console.log(that.uname); </span><br><span class="line">            &#x2F;&#x2F; that里面存储的是constructor里面的this</span><br><span class="line">        &#125;</span><br><span class="line">        dance() &#123;</span><br><span class="line">            &#x2F;&#x2F; 这个dance里面的this 指向的是实例对象 </span><br><span class="line">            ldh 因为ldh 调用了这个函数</span><br><span class="line">            _that &#x3D; this;</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var ldh &#x3D; new Star(&#39;刘德华&#39;);</span><br><span class="line">    console.log(that &#x3D;&#x3D;&#x3D; ldh);</span><br><span class="line">    ldh.dance();</span><br><span class="line">    console.log(_that &#x3D;&#x3D;&#x3D; ldh);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1. 在ES6中类没有变量提升，所以必须先定义类，</span><br><span class="line">才能通过类实例化对象</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 类里面的共有的属性和方法一定要加this使用.</span><br></pre></td></tr></table></figure></li>
+<li>constructor 里面的this指向实例对象，方法里面的this 指向这个方法的调用者。<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var that;</span><br><span class="line">    var _that;</span><br><span class="line">    class Star &#123;</span><br><span class="line">        constructor(uname, age) &#123;</span><br><span class="line">            &#x2F;&#x2F; constructor 里面的this 指向的是 创建的实例对象</span><br><span class="line">            that &#x3D; this;</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">            this.uname &#x3D; uname;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">            &#x2F;&#x2F; this.sing();</span><br><span class="line">            this.btn &#x3D; document.querySelector(&#39;button&#39;);</span><br><span class="line">            this.btn.onclick &#x3D; this.sing;</span><br><span class="line">        &#125;</span><br><span class="line">        sing() &#123;</span><br><span class="line">            &#x2F;&#x2F; 这个sing方法里面的this 指向的是 btn </span><br><span class="line">            这个按钮,因为这个按钮调用了这个函数</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">            console.log(that.uname); </span><br><span class="line">            &#x2F;&#x2F; that里面存储的是constructor里面的this</span><br><span class="line">        &#125;</span><br><span class="line">        dance() &#123;</span><br><span class="line">            &#x2F;&#x2F; 这个dance里面的this 指向的是实例对象 </span><br><span class="line">            ldh 因为ldh 调用了这个函数</span><br><span class="line">            _that &#x3D; this;</span><br><span class="line">            console.log(this);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var ldh &#x3D; new Star(&#39;刘德华&#39;);</span><br><span class="line">    console.log(that &#x3D;&#x3D;&#x3D; ldh);</span><br><span class="line">    ldh.dance();</span><br><span class="line">    console.log(_that &#x3D;&#x3D;&#x3D; ldh);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1. 在ES6中类没有变量提升，所以必须先定义类，</span><br><span class="line">才能通过类实例化对象</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 类里面的共有的属性和方法一定要加this使用.</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 </li>
 </ul>
@@ -420,7 +420,6 @@
       <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-
   <aside id="sidebar" class="sidebar">
     
       <div id="sidebar-dimmer"></div>
@@ -549,8 +548,7 @@
                   </li>
                 
               </ul>
-			  
-<div id="days"></div>
+			   <div id="days"></div>
 <script>
 function show_date_time(){
     window.setTimeout("show_date_time()", 1000);
@@ -577,11 +575,6 @@ function setzero(i) {
 }
 show_date_time();
 </script>
-
-
-
-
-
             </div>
           
 
@@ -615,6 +608,271 @@ show_date_time();
           
         </div>
       
+	<div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
 
     </div>
   </aside>
@@ -1196,5 +1454,13 @@ show_date_time();
   <!-- 代码块复制功能 -->
   <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
   <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  
+  <script src="/live2d-widget/autoload.js"></script>
+  <!-- 鼠标点击样式 -->
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
 </body>
 </html>
