@@ -41,7 +41,7 @@
 <p><code>如果找到Object.prototype上还找不到，原路返回，告诉实例此方法或属性没有找到或者没有定义。如果说在中间的任意一个环节找到了，就停止向上查找直接返回结果</code></p>
 <h2 id="原型对象和原型链的作用"><a href="#原型对象和原型链的作用" class="headerlink" title="原型对象和原型链的作用"></a>原型对象和原型链的作用</h2><p>如果构造函数中有很多属性和方法，那么构造函数所有的实例化对象都是公用这些属性和方法的，当有多个实例想用共用这些东西的时候，每个实例都拷贝一份，就造成极大的资源浪费，那是不是可以考虑存把这些需要共用的属性和方法放到一个共同的东西上。这个共同的东西就是原型对象（prototype）。</p>
 <p><code>当然原型链实现继承也会存在一些问题，最主要的问题来自包含引用类型的原型。其次就是在创建子类型的实例时，不能向超类型的构造函数中传递参数。</code></p>
-<h2 id="构造函数、实例对象、原型对象三者之间的关系"><a href="#构造函数、实例对象、原型对象三者之间的关系" class="headerlink" title="构造函数、实例对象、原型对象三者之间的关系"></a>构造函数、实例对象、原型对象三者之间的关系</h2><p><img src="yuanxing.webp" alt="构造函数、实例对象、原型三者的关系"></p>
+<h2 id="构造函数、实例对象、原型对象三者之间的关系"><a href="#构造函数、实例对象、原型对象三者之间的关系" class="headerlink" title="构造函数、实例对象、原型对象三者之间的关系"></a>构造函数、实例对象、原型对象三者之间的关系</h2><p><img src="/posts/139b1e40/yuanxing.webp" alt="构造函数、实例对象、原型三者的关系"></p>
 <p>任何函数都具有一个 prototype 属性，该属性是一个对象。</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(F.prototype) <span class="comment">// =&gt; object</span></span><br><span class="line"></span><br><span class="line">F.prototype.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hi!'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -109,11 +109,11 @@
     <title>Vue生命周期详解</title>
     <url>/posts/6f7db675.html</url>
     <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
-<p><img src="vue1.jpg" alt="生命周期图"></p>
-<center><font color=#ccc>生命周期图</font> </center>
+<p><img src="/posts/6f7db675/vue1.jpg" alt="生命周期图"></p>
+<center><font color="#ccc">生命周期图</font> </center>
 
 <hr>
-<p><img src="vue2.jpg" alt=""></p>
+<p><img src="/posts/6f7db675/vue2.jpg" alt></p>
 <ul>
 <li><p>beforeCreate(创建前)<br>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p>
 </li>
