@@ -89,16 +89,15 @@
 
 
 
-<meta name="description" content="Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。  生命周期图      beforeCreate(创建前)在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， da">
+<meta name="description" content="Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。  生命周期图  ***** ![](vue2.jpg) +    beforeCreate(创建前) 在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue生命周期详解">
 <meta property="og:url" content="http://yoursite.com/posts/6f7db675.html">
 <meta property="og:site_name" content="前端小站">
-<meta property="og:description" content="Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。  生命周期图      beforeCreate(创建前)在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， da">
+<meta property="og:description" content="Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。  生命周期图  ***** ![](vue2.jpg) +    beforeCreate(创建前) 在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并">
 <meta property="og:image" content="http://yoursite.com/posts/6f7db675/vue1.jpg">
-<meta property="og:image" content="http://yoursite.com/posts/6f7db675/vue2.jpg">
 <meta property="article:published_time" content="2020-02-16T08:24:50.000Z">
-<meta property="article:modified_time" content="2020-02-17T01:19:08.396Z">
+<meta property="article:modified_time" content="2020-02-17T15:39:27.488Z">
 <meta property="article:author" content="丶远方">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -373,7 +372,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T09:19:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T23:39:27+08:00">
                 2020-02-17
               </time>
             
@@ -442,12 +441,12 @@
         <p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
 <p><img src="/posts/6f7db675/vue1.jpg" alt="生命周期图"></p>
 <center><font color="#ccc">生命周期图</font> </center>
+*****
+![](vue2.jpg)
++    beforeCreate(创建前)
+在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。
 
-<hr>
-<p><img src="/posts/6f7db675/vue2.jpg" alt></p>
 <ul>
-<li><p>beforeCreate(创建前)<br>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p>
-</li>
 <li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
 </li>
 <li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>

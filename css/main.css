@@ -1107,8 +1107,19 @@ pre .javascript .function {
   text-align: center;
 }
 .tag-cloud a {
-  display: inline-block;
+  display: block;
   margin: 10px;
+  border-radius: 50%;
+  color: #f40 !important;
+  width: 100px;
+  transition: all 0.5s;
+}
+.tag-cloud a:hover {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
 }
 .back-to-top {
   display: none;
@@ -2104,7 +2115,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #26ffff;
+  background: #28bf38;
 }
 .links-of-blogroll {
   font-size: 13px;
