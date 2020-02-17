@@ -2109,7 +2109,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bddf6b;
+  background: #fc47a4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3749,6 +3749,16 @@ ol {
   counter-increment: ol-li;
 }
 .back-to-top {
+  box-sizing: border-box;
+  position: fixed;
+  right: 30px;
+  z-index: 1050;
+  padding: 0 6px;
+  font-size: 12px;
+  opacity: 1;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
   width: 70px;
   height: 900px;
   top: -900px;
@@ -4050,7 +4060,7 @@ span.focus-links:hover {
 .site-meta {
   margin-left: 0px;
   text-align: center;
-  background-image: url("/images/bg.jpeg");
+  background: #21252b;
 }
 .site-meta .site-title {
   font-weight: 900;
@@ -4108,6 +4118,9 @@ span.focus-links:hover {
   margin-top: 10px;
 }
 .site-overview {
+  text-align: center;
+}
+.site-overview div {
   text-align: center;
 }
 .sidebar-inner {
@@ -4742,6 +4755,13 @@ div.vcontrol {
   color: #07b39b;
   font-size: 13px;
   margin-top: 15px;
+}
+#canvas {
+  padding: 20px;
+}
+.my-canvas {
+  height: 300px;
+  width: 300px;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
