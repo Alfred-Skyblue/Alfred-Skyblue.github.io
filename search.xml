@@ -67,83 +67,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-      <tags>
-        <tag>-JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apply、call和bind方法</title>
-    <url>/posts/384c131e.html</url>
-    <content><![CDATA[<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
-<p>apply的使用语法：</p>
-<blockquote>
-<p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
-</blockquote>
-<a id="more"></a>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取按钮</span></span><br><span class="line">		<span class="keyword">var</span> btn=<span class="built_in">document</span>.querySelectorAll(<span class="string">".btn"</span>);</span><br><span class="line">		<span class="comment">// 使用apply方法,改变Array中forEach方法的指向,循环遍历解析按钮注册点击事件</span></span><br><span class="line">		<span class="built_in">Array</span>.prototype.forEach.apply(btn,[<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">			addEventListener(ele,<span class="string">"click"</span>,clickHandle);</span><br><span class="line">		&#125;]);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个函数</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);<span class="comment">//30男</span></span><br></pre></td></tr></table></figure></div>
-<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过apply方法来改变this的指向</p>
-<h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>call的使用语法：</p>
-<blockquote>
-<p>函数名字.call(对象,参数1,参数2,…);<br>方法名字.call(对象,参数1,参数2,…);<br>call方法是以字符串形式传递参数</p>
-</blockquote>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取所有的点赞标签</span></span><br><span class="line"><span class="keyword">var</span> praise=<span class="built_in">document</span>.querySelectorAll(<span class="string">".praise"</span>);</span><br><span class="line"><span class="comment">// 使用call方法,改变Array中forEach方法的指向,遍历点赞标签，注册点击事件</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.forEach.call(praise,(<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">	addEventListener(ele,<span class="string">"click"</span>,praHandle);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.call(obj,<span class="number">10</span>,<span class="number">50</span>);<span class="comment">//60男</span></span><br></pre></td></tr></table></figure></div>
-<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过call方法来改变this的指向</p>
-<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><blockquote>
-<p>bind方法是复制的意思,参数可以在复制的时候传进去,也可以在复制之后调用的时候传入进去<br>apply和call是调用的时候改变this指向<br>bind方法,是赋值一份的时候,改变了this的指向</p>
-</blockquote>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 人的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 添加原型方法</span></span><br><span class="line">Person.prototype.play=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>+<span class="string">"====&gt;"</span>+<span class="keyword">this</span>.age);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 学生的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化对象</span></span><br><span class="line"><span class="keyword">var</span> per=<span class="keyword">new</span> Person(<span class="number">60</span>);</span><br><span class="line"><span class="keyword">var</span> stu=<span class="keyword">new</span> Student(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过bind方法赋值一份</span></span><br><span class="line"><span class="keyword">var</span> ff=per.play.bind(stu);</span><br><span class="line">ff();</span><br></pre></td></tr></table></figure></div>
-<ul>
-<li>bind是用来复制一份</li>
-</ul>
-<p>使用的语法:</p>
-<blockquote>
-<p>函数名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个函数<br>方法名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个方法</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Vue生命周期详解</title>
-    <url>/posts/6f7db675.html</url>
-    <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
-<p><img src="/posts/6f7db675/vue1.jpg" alt="生命周期图"></p>
-<center><font color="#ccc">生命周期图</font> </center>
-*****
-![](vue2.jpg)
-+    beforeCreate(创建前)
-在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。
-
-<ul>
-<li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
-</li>
-<li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>
-</li>
-<li><p>mounted<br>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p>
-</li>
-<li><p>beforeUpdate<br>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
-</li>
-<li><p>updated(更新后)<br>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p>
-</li>
-<li><p>beforeDestrioy(销毁前)<br>在实例销毁之前调用，实例仍然完全可用，</p>
-</li>
-</ul>
-<ol>
-<li>这一步还可以用this来获取实例</li>
-<li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li>
-</ol>
-<ul>
-<li>destroyed(销毁后)<br>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</li>
-</ul>
-]]></content>
-      <categories>
-        <category>-Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
   </entry>
   <entry>
     <title>构造函数（第二节）</title>
@@ -261,26 +184,184 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo</title>
-    <url>/posts/ab21860c.html</url>
-    <content><![CDATA[<h1 id="创建本地博客"><a href="#创建本地博客" class="headerlink" title="创建本地博客"></a>创建本地博客</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="code"><pre><span class="line">1.基于node</span><br><span class="line">2.npm包管理工具</span><br><span class="line">3.npm install -g hexo(hexo-cli)</span><br><span class="line">4.下载的资源是国外的可能比较慢</span><br><span class="line">5.淘宝镜像（代理的仓库）</span><br><span class="line">6.npm install -g hexo --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">7.在一个空目录（hexo init）博客系统的初始化</span><br><span class="line">8.hexo\source\_posts md文档就是博客文档</span><br><span class="line">9.如果要写一篇博客（新建文件  xxx.md）</span><br><span class="line">10.把md文档转html文件（hexo g）</span><br><span class="line">11.在自己的服务器预览（hexo s） localhost:4000</span><br><span class="line">12.如果从新生成html文件可能会有缓存 （hexo clean,hexo g）</span><br><span class="line"></span><br><span class="line">13.和github关联 推代码到github</span><br><span class="line">14.和git关联 hexo-deploy-git 插件（安装 npm install hexo-deployer-git --save ）</span><br><span class="line">15.和github关联需要配置文件</span><br><span class="line">16.修改文件  _config.yml  在最下面</span><br><span class="line">17.</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:Alfred-Skyblue&#x2F;Akfred.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">18. 需要在github配置仓库 名称（用户名.github.io）</span><br><span class="line">19. 把代码推到github (hexo d)</span><br><span class="line">20. 只能预览代码 无法预览页面</span><br><span class="line">21. 配置当前仓库可以通过网络访问页面</span><br><span class="line">22. 在仓库的首页  settings---&gt;GitHub Pages--&gt;改选项 Source（none---master branch）</span><br><span class="line">23. 通过 用户名.github.io 访问你的博客</span><br></pre></td></tr></table></figure></div>]]></content>
+    <title>Vue生命周期详解</title>
+    <url>/posts/6f7db675.html</url>
+    <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
+<p><img src="/posts/6f7db675/vue1.jpg" alt="生命周期图"></p>
+<center><font color="#ccc">生命周期图</font> </center>
+*****
+![](vue2.jpg)
++    beforeCreate(创建前)
+在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。
+
+<ul>
+<li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
+</li>
+<li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>
+</li>
+<li><p>mounted<br>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p>
+</li>
+<li><p>beforeUpdate<br>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
+</li>
+<li><p>updated(更新后)<br>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p>
+</li>
+<li><p>beforeDestrioy(销毁前)<br>在实例销毁之前调用，实例仍然完全可用，</p>
+</li>
+</ul>
+<ol>
+<li>这一步还可以用this来获取实例</li>
+<li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li>
+</ol>
+<ul>
+<li>destroyed(销毁后)<br>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/4a17b156.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure></div>
+    <title>apply、call和bind方法</title>
+    <url>/posts/384c131e.html</url>
+    <content><![CDATA[<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
+<p>apply的使用语法：</p>
+<blockquote>
+<p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
+</blockquote>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取按钮</span></span><br><span class="line">		<span class="keyword">var</span> btn=<span class="built_in">document</span>.querySelectorAll(<span class="string">".btn"</span>);</span><br><span class="line">		<span class="comment">// 使用apply方法,改变Array中forEach方法的指向,循环遍历解析按钮注册点击事件</span></span><br><span class="line">		<span class="built_in">Array</span>.prototype.forEach.apply(btn,[<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">			addEventListener(ele,<span class="string">"click"</span>,clickHandle);</span><br><span class="line">		&#125;]);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个函数</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);<span class="comment">//30男</span></span><br></pre></td></tr></table></figure></div>
+<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过apply方法来改变this的指向</p>
+<h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>call的使用语法：</p>
+<blockquote>
+<p>函数名字.call(对象,参数1,参数2,…);<br>方法名字.call(对象,参数1,参数2,…);<br>call方法是以字符串形式传递参数</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取所有的点赞标签</span></span><br><span class="line"><span class="keyword">var</span> praise=<span class="built_in">document</span>.querySelectorAll(<span class="string">".praise"</span>);</span><br><span class="line"><span class="comment">// 使用call方法,改变Array中forEach方法的指向,遍历点赞标签，注册点击事件</span></span><br><span class="line"><span class="built_in">Array</span>.prototype.forEach.call(praise,(<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">	addEventListener(ele,<span class="string">"click"</span>,praHandle);</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.call(obj,<span class="number">10</span>,<span class="number">50</span>);<span class="comment">//60男</span></span><br></pre></td></tr></table></figure></div>
+<p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过call方法来改变this的指向</p>
+<h2 id="bind方法"><a href="#bind方法" class="headerlink" title="bind方法"></a>bind方法</h2><blockquote>
+<p>bind方法是复制的意思,参数可以在复制的时候传进去,也可以在复制之后调用的时候传入进去<br>apply和call是调用的时候改变this指向<br>bind方法,是赋值一份的时候,改变了this的指向</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 人的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 添加原型方法</span></span><br><span class="line">Person.prototype.play=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>+<span class="string">"====&gt;"</span>+<span class="keyword">this</span>.age);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 学生的构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.age=age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化对象</span></span><br><span class="line"><span class="keyword">var</span> per=<span class="keyword">new</span> Person(<span class="number">60</span>);</span><br><span class="line"><span class="keyword">var</span> stu=<span class="keyword">new</span> Student(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过bind方法赋值一份</span></span><br><span class="line"><span class="keyword">var</span> ff=per.play.bind(stu);</span><br><span class="line">ff();</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>bind是用来复制一份</li>
+</ul>
+<p>使用的语法:</p>
+<blockquote>
+<p>函数名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个函数<br>方法名字.bind(对象,参数1,参数2,…);—-&gt;返回值是复制之后的这个方法</p>
+</blockquote>
 ]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Promise</title>
+    <url>/posts/54b11a0c.html</url>
+    <content><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><blockquote>
+<p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
+</blockquote>
+<h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">  fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">    fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<p>终于，我们的<code>盖世英雄</code>出现了，他身披金甲圣衣、驾着七彩祥云。好吧打岔儿了，没错他就是我们的<code>Promise</code>，那让我们来看看用了<code>Promise</code>之后，上面的代码会变成什么样吧</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.readFile(url,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,data</span>)</span>&#123;</span><br><span class="line">      error &amp;&amp; reject(error)</span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read(<span class="string">'./a.txt'</span>).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data) </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data)  </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>如上所示</p>
+<hr>
+<h2 id="2-重点开始，小眼睛都看过来"><a href="#2-重点开始，小眼睛都看过来" class="headerlink" title="2.重点开始，小眼睛都看过来"></a>2.重点开始，小眼睛都看过来</h2><h3 id="2-1constructor"><a href="#2-1constructor" class="headerlink" title="2.1constructor"></a>2.1constructor</h3><p>我们先声明一个类，叫做<code>Promise</code>，里面是构造函数。如果es6还有问题的可以去阮大大的博客上学习一下（传送门☞<a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">es6</a>）</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Promise</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(executor)&#123;</span><br><span class="line">    <span class="comment">//控制状态，使用了一次之后，接下来的都不被使用</span></span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'pendding'</span></span><br><span class="line">    <span class="keyword">this</span>.value = <span class="literal">undefined</span></span><br><span class="line">    <span class="keyword">this</span>.reason = <span class="literal">undefined</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义resolve函数</span></span><br><span class="line">    <span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//这里pendding，主要是为了防止executor中调用了两次resovle或reject方法，而我们只调用一次</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">        <span class="keyword">this</span>.value = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义reject函数</span></span><br><span class="line">    <span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">        <span class="keyword">this</span>.reason = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//executor方法可能会抛出异常，需要捕获</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="comment">//将resolve和reject函数给使用者      </span></span><br><span class="line">      executor(resolve,reject)      </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">      <span class="comment">//如果在函数中抛出异常则将它注入reject中</span></span><br><span class="line">      reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>那么接下来我会分析一下上面代码的作用，原理：</p>
+</blockquote>
+<ul>
+<li><p><code>executor</code>：这是实例<code>Promise</code>对象时在构造器中传入的参数，一般是一个<code>function(resolve,reject){}</code></p>
+</li>
+<li><p><code>status：Promise</code>的状态，一开始是默认的pendding状态，每当调用道resolve和reject方法时，就会改变其值，在后面的then方法中会用到</p>
+</li>
+<li><p><code>value：resolve</code>回调成功后，调用resolve方法里面的参数值</p>
+</li>
+<li><p><code>reason：reject</code>回调成功后，调用reject方法里面的参数值</p>
+</li>
+<li><p><code>resolve：</code>声明resolve方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
+</li>
+<li><p><code>reject：</code>声明reject方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
+</li>
+</ul>
+<h3 id="2-2-then"><a href="#2-2-then" class="headerlink" title="2.2 then"></a>2.2 then</h3><p><code>then</code>方法是<code>Promise</code>中最为重要的方法，他的用法大家都应该已经知道，就是将<code>Promise</code>中的<code>resolve</code>或者<code>reject</code>的结果拿到，那么我们就能知道这里的<code>then</code>方法需要两个参数，成功回调和失败回调，上代码！</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">then(onFufilled,onRejected)&#123;  </span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'resolve'</span>)&#123;</span><br><span class="line">    onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'reject'</span>)&#123;</span><br><span class="line">    onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里主要做了将构造器中resolve和reject的结果传入<code>onFufilled</code>和<code>onRejected</code>中，注意这两个是使用者传入的参数，是个方法。所以你以为这么简单就完了？要想更Swag的应对各种场景，我们必须得再完善。继续往下走！</p>
+<h2 id="3-异步的Promise"><a href="#3-异步的Promise" class="headerlink" title="3.异步的Promise"></a>3.异步的Promise</h2><p>之前我们只是处理了同步情况下的Promise，简而言之所有操作都没有异步的成分在内。那么如果是异步该怎么办？</p>
+<h3 id="3-1-callback"><a href="#3-1-callback" class="headerlink" title="3.1 callback"></a>3.1 callback</h3><blockquote>
+<p>最早处理异步的方法就是callback，就相当于我让你帮我扫地，我会在给你发起任务时给你一个手机，之后我做自己的事情去，不用等你，等你扫完地就会打手机给我，诶，我就知道了地扫完了。这个手机就是callback，回调函数。</p>
+</blockquote>
+<p>首先我们需要改一下构造器里的代码，分别添加两个回调函数的数组，分别对应成功回调和失败回调。他们的作用是当成功执行resolve或reject时，执行callback。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//存放成功回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onResolvedCallbacks = []</span><br><span class="line"><span class="comment">//存放失败回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onRejectedCallbacks = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">    <span class="keyword">this</span>.value = data</span><br><span class="line">    <span class="comment">//监听回调函数</span></span><br><span class="line">    <span class="keyword">this</span>.onResolvedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">    <span class="keyword">this</span>.reason = data</span><br><span class="line">    <span class="keyword">this</span>.onRejectedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<p>然后是then需要多加一个状态判断，当Promise中是异步操作时，需要在我们之前定义的回调函数数组中添加一个回调函数。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'pendding'</span>)&#123;</span><br><span class="line">  <span class="keyword">this</span>.onResolvedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// to do....</span></span><br><span class="line">    <span class="keyword">let</span> x = onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">this</span>.onRejectedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> x = onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>ok！大功告成，异步已经解决了</p>
+<h3 id="3-2-Promise-resolve"><a href="#3-2-Promise-resolve" class="headerlink" title="3.2 Promise.resolve"></a>3.2 Promise.resolve</h3><blockquote>
+<p>一般情况下我们都会使用new Promise（）来创建Promise对象，但是除此之外我们也可以使用其他方法。</p>
+</blockquote>
+<p>静态方法<code>Promise.resolve(value)</code>可以认为是<code>new Promise()</code>方法的快捷方式。</p>
+<p>比如Promise.resolve(20)可以认为是以下代码的语法糖。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">				resolve(<span class="number">20</span>)</span><br><span class="line">			&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+
+
+
+<h2 id="4-完善Promise"><a href="#4-完善Promise" class="headerlink" title="4.完善Promise"></a>4.完善Promise</h2><blockquote>
+<p>我们现在已经基本完成了<code>Promise</code>的<code>then</code>方法，那么现在我们需要看看他的其他方法。</p>
+</blockquote>
+<h3 id="4-1-catch"><a href="#4-1-catch" class="headerlink" title="4.1 catch"></a>4.1 catch</h3><p>相信大家都知道catch这个方法是用来捕获Promise中的reject的值，也就是相当于then方法中的onRejected回调函数，那么问题就解决了。我们来看代码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//catch方法</span></span><br><span class="line"><span class="keyword">catch</span>(onRejected)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.then(<span class="literal">null</span>,onRejected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>该方法是挂在Promise原型上的方法。当我们调用catch传callback的时候，就相当于是调用了then方法。</p>
+</blockquote>
+<h3 id="4-2-resolve-reject"><a href="#4-2-resolve-reject" class="headerlink" title="4.2 resolve/reject"></a>4.2 resolve/reject</h3><p>大家一定都看到过<code>Promise.resolve()</code>、<code>Promise.reject()</code>这两种用法，它们的作用其实就是返回一个Promise对象，我们来实现一下。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//resolve方法</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    resolve(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//reject方法</span></span><br><span class="line"><span class="built_in">Promise</span>.reject = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    reject(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>这两个方法是直接可以通过class调用的，原理就是返回一个内部是resolve或reject的Promise对象。</p>
+</blockquote>
+<h3 id="4-3-all"><a href="#4-3-all" class="headerlink" title="4.3 all"></a>4.3 all</h3><p>Promise.all 生成并返回一个新的Promise对象，所以它可以使用Promise实例的所有方法。参数传递promise数组中所有的Promise对象都变为resolve的时候，该方法才会返回，新创建的Promise则会使用这些promise的值。</p>
+<p>如果参数中的任何一个Promise为reject的话，则整个Promise.all调用会立即终止，并返回一个reject的新的Promise对象。</p>
+<p>由于参数数组中的每个元素都是由Promise.resolve包装（wrap）的，所以Promose.all可以处理不同类型的Promose对象。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">const</span> p3 = <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// [1,2,3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>其原理就是将参数中的数组取出遍历，每当执行成功都会执行processData方法，processData方法就是用来记录每个Promise的值和它对应的下标，当执行的次数等于数组长度时就会执行resolve，把arr的值给then。这里会有一个坑，如果你是通过arr数组的长度来判断他是否应该resolve的话就会出错，为什么呢？因为js数组的特性，导致如果先出来的是1位置上的值进arr，那么0位置上也会多一个空的值，所以不合理。</p>
+</blockquote>
+<h3 id="4-4-race"><a href="#4-4-race" class="headerlink" title="4.4 race"></a>4.4 race</h3><p>Promise.race 生成并返回一个新的Promise对象。<br>参数Promise数组中的任何一个Promise 对象如果变为resolve 或者reject的话，该函数就会返回，并使用这个Promise 对象的值进行resolve 或者reject。</p>
+<p>注：Promise.race方法只会执行第一个返回的Promise对象</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//race方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">1</span>)</span><br><span class="line">    &#125;, <span class="number">5000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">2</span>)</span><br><span class="line">    &#125;, <span class="number">3000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([p1(), p2()]).then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// 三秒钟后打印2</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="Promise语法糖-deferred"><a href="#Promise语法糖-deferred" class="headerlink" title="Promise语法糖 deferred"></a>Promise语法糖 deferred</h2><p>语法糖这三个字大家一定很熟悉，作为一个很Swag的前端工程师，对<code>async/await</code>这对兄弟肯定很熟悉，没错他们就是<code>generator</code>的语法糖。而我们这里要讲的语法糖是Promise的。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//promise语法糖 也用来测试</span></span><br><span class="line"><span class="built_in">Promise</span>.deferred = <span class="built_in">Promise</span>.defer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dfd = &#123;&#125;</span><br><span class="line">  dfd.promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    dfd.resolve = resolve</span><br><span class="line">    dfd.reject = reject</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> dfd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>什么作用呢？看下面代码你就知道了</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'./promises'</span>)</span><br><span class="line"><span class="comment">//Promise上的语法糖，为了防止嵌套，方便调用</span></span><br><span class="line"><span class="comment">//坏处 错误处理不方便</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> defer = <span class="built_in">Promise</span>.defer()</span><br><span class="line">  fs.readFile(<span class="string">'./1.txt'</span>,<span class="string">'utf8'</span>,(err,data)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)defer.reject(err)</span><br><span class="line">    defer.resolve(data)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> defer.Promise</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>没错，我们可以方便的去调用他语法糖defer中的Promise对象。那么它还有没有另外的方法呢？答案是有的。我们需要在全局上安装promises-aplus-tests插件npm i promises-aplus-tests -g，再输入promises-aplus-tests [js文件名] 即可验证你的Promise的规范。</p>
+</blockquote>
+<p>文章非本人原创，由于原文很多代码比较复杂，本人做了一些简化，看起来容易理解一些，不过没有原文那么详细，知识不问出处，请珍惜他人劳动成果<br>原文地址<a href="https://juejin.im/post/5b32f552f265da59991155f0" target="_blank" rel="noopener">掘金大咖</a></p>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
   </entry>
 </search>
