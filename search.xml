@@ -5,11 +5,12 @@
     <url>/posts/139b1e40.html</url>
     <content><![CDATA[<h2 id="原型对象prototype"><a href="#原型对象prototype" class="headerlink" title="原型对象prototype"></a>原型对象prototype</h2><ul>
 <li>每一个函数对象都有一个prototype属性，但是普通对象是没有的</li>
-<li>普通对象都是通过函数创建的</li>
-</ul>
+<li>普通对象都是通过函数创建的<a id="more"></a>
 <blockquote>
 <p>在 ECMAScript 核心所定义的全部属性中，最耐人寻味的就要数 prototype 属性了。对于 ECMAScript 中的引用类型而言，prototype 是保存着它们所有实例方法的真正所在。换句话所说，诸如 toString()和 valuseOf()等方法实际上都保存在 prototype 名下，只不过是通过各自对象的实例访问罢了。—-《JavaScript 高级程序设计》</p>
 </blockquote>
+</li>
+</ul>
 <p>JS所有对象分为函数对象和普通对象。凡是通过new Function()创建得来的对象都是函数对象。函数对象拥有prototype属性和proto属性。</p>
 <p><strong>prototype</strong></p>
 <blockquote>
@@ -72,9 +73,8 @@
     <title>构造函数（第二节）</title>
     <url>/posts/1688ec4d.html</url>
     <content><![CDATA[<p>摘要内容</p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><pre><code>构造函数是一种特殊的函数，主要用来初始化对象，即为对
-象成员变量赋初始值，它总与new一起使用。我们可以把对象
-中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</code></pre><a id="more"></a>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，主要用来初始化对象，即为对<br>象成员变量赋初始值，它总与new一起使用。我们可以把对象<br>中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</p>
+<a id="more"></a>
 <p>在 JS 中，使用构造函数时要注意以下两点：</p>
 <ul>
 <li>构造函数用于创建某一类对象，其首字母要大写</li>
@@ -187,6 +187,7 @@
     <title>Vue生命周期详解</title>
     <url>/posts/6f7db675.html</url>
     <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
+<a id="more"></a>
 <p><img src="/posts/6f7db675/vue1.jpg" alt="生命周期图"></p>
 <center><font color="#ccc">生命周期图</font> </center>
 *****
@@ -226,13 +227,15 @@
   <entry>
     <title>apply、call和bind方法</title>
     <url>/posts/384c131e.html</url>
-    <content><![CDATA[<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
-<p>apply的使用语法：</p>
+    <content><![CDATA[<h2 id="三者的相似之处"><a href="#三者的相似之处" class="headerlink" title="三者的相似之处"></a>三者的相似之处</h2><ol>
+<li>都是用来改变函数的this对象的指向的。</li>
+<li>第一个参数都是this要指向的对象。</li>
+<li>都可以利用后续参数传参。<a id="more"></a>
+<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2>apply的使用语法：</li>
+</ol>
 <blockquote>
 <p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
 </blockquote>
-<a id="more"></a>
-
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取按钮</span></span><br><span class="line">		<span class="keyword">var</span> btn=<span class="built_in">document</span>.querySelectorAll(<span class="string">".btn"</span>);</span><br><span class="line">		<span class="comment">// 使用apply方法,改变Array中forEach方法的指向,循环遍历解析按钮注册点击事件</span></span><br><span class="line">		<span class="built_in">Array</span>.prototype.forEach.apply(btn,[<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">			addEventListener(ele,<span class="string">"click"</span>,clickHandle);</span><br><span class="line">		&#125;]);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个函数</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);<span class="comment">//30男</span></span><br></pre></td></tr></table></figure></div>
 <p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过apply方法来改变this的指向</p>
 <h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>call的使用语法：</p>
@@ -264,6 +267,7 @@
 <p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
 </blockquote>
 <h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
+<a id="more"></a>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">  fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">    fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
 
 

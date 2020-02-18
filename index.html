@@ -368,7 +368,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:21:29+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:34:20+08:00">
                 2020-02-18
               </time>
             
@@ -435,14 +435,9 @@
 
       
         
-          
-          原型对象prototype
-每一个函数对象都有一个prototype属性，但是普通对象是没有的
-普通对象都是通过函数创建的
-
-
-在 ECMAScript 核心所定义的全部属性中，最耐人寻味的就要数 prototype 属性了。对于 ECMAScript 中的引用类型而言，prototype 是保存着
-          ...
+          <h2 id="原型对象prototype"><a href="#原型对象prototype" class="headerlink" title="原型对象prototype"></a>原型对象prototype</h2><ul>
+<li>每一个函数对象都有一个prototype属性，但是普通对象是没有的</li>
+<li>普通对象都是通过函数创建的</li></ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/139b1e40.html#more" rel="contents">
@@ -554,8 +549,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T09:19:08+08:00">
-                2020-02-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:34:37+08:00">
+                2020-02-18
               </time>
             
           </span>
@@ -622,9 +617,7 @@
       
         
           <p>摘要内容</p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><pre><code>构造函数是一种特殊的函数，主要用来初始化对象，即为对
-象成员变量赋初始值，它总与new一起使用。我们可以把对象
-中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</code></pre>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，主要用来初始化对象，即为对<br>象成员变量赋初始值，它总与new一起使用。我们可以把对象<br>中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/1688ec4d.html#more" rel="contents">
@@ -736,7 +729,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:19:30+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:31:11+08:00">
                 2020-02-18
               </time>
             
@@ -803,14 +796,7 @@
 
       
         
-          
-          Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。
-
-生命周期图 
-*****
-![](vue2.jpg)
-+    beforeCreate(创建前)
-          ...
+          <p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/6f7db675.html#more" rel="contents">
@@ -922,7 +908,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:20:55+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:35:34+08:00">
                 2020-02-18
               </time>
             
@@ -989,11 +975,10 @@
 
       
         
-          <h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
-<p>apply的使用语法：</p>
-<blockquote>
-<p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
-</blockquote>
+          <h2 id="三者的相似之处"><a href="#三者的相似之处" class="headerlink" title="三者的相似之处"></a>三者的相似之处</h2><ol>
+<li>都是用来改变函数的this对象的指向的。</li>
+<li>第一个参数都是this要指向的对象。</li>
+<li>都可以利用后续参数传参。</li></ol>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/384c131e.html#more" rel="contents">
@@ -1105,7 +1090,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:14:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:31:17+08:00">
                 2020-02-18
               </time>
             
@@ -1172,13 +1157,10 @@
 
       
         
-          
-          Promise
-Promise出现的本质是为了解决异步函数回调地狱的问题
-
-1.回调地狱曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不callback hell，这种环环相扣的代码可以说是相当恶心了
-12345678let fs = require('fs')fs.readFile('./
-          ...
+          <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><blockquote>
+<p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
+</blockquote>
+<h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/posts/54b11a0c.html#more" rel="contents">

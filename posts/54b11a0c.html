@@ -89,14 +89,14 @@
 
 
 
-<meta name="description" content="Promise Promise出现的本质是为了解决异步函数回调地狱的问题  1.回调地狱曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不callback hell，这种环环相扣的代码可以说是相当恶心了 12345678let fs &#x3D; require(&#39;fs&#39;)fs.readFile(&#39;.&#x2F;a.txt&#39;,&#39;utf8&#39;,function(err,data)&amp;#123;  fs.readFil">
+<meta name="description" content="Promise Promise出现的本质是为了解决异步函数回调地狱的问题  1.回调地狱曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不callback hell，这种环环相扣的代码可以说是相当恶心了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Promise">
 <meta property="og:url" content="http://yoursite.com/posts/54b11a0c.html">
 <meta property="og:site_name" content="前端小站">
-<meta property="og:description" content="Promise Promise出现的本质是为了解决异步函数回调地狱的问题  1.回调地狱曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不callback hell，这种环环相扣的代码可以说是相当恶心了 12345678let fs &#x3D; require(&#39;fs&#39;)fs.readFile(&#39;.&#x2F;a.txt&#39;,&#39;utf8&#39;,function(err,data)&amp;#123;  fs.readFil">
+<meta property="og:description" content="Promise Promise出现的本质是为了解决异步函数回调地狱的问题  1.回调地狱曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不callback hell，这种环环相扣的代码可以说是相当恶心了">
 <meta property="article:published_time" content="2019-09-18T12:02:06.000Z">
-<meta property="article:modified_time" content="2020-02-18T12:14:33.162Z">
+<meta property="article:modified_time" content="2020-02-18T12:31:17.874Z">
 <meta property="article:author" content="丶远方">
 <meta name="twitter:card" content="summary">
 
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:14:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:31:17+08:00">
                 2020-02-18
               </time>
             
@@ -439,6 +439,7 @@
 <p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
 </blockquote>
 <h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
+<a id="more"></a>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">  fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">    fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
 
 

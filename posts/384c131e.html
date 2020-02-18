@@ -89,14 +89,14 @@
 
 
 
-<meta name="description" content="apply方法apply方法用于改变this的指向 apply的使用语法：  函数名字.apply(对象,[参数1,参数2,…]);方法名字.apply(对象,[参数1,参数2,…]);apply方法是以数组的方式传递参数">
+<meta name="description" content="三者的相似之处 都是用来改变函数的this对象的指向的。 第一个参数都是this要指向的对象。 都可以利用后续参数传参。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apply、call和bind方法">
 <meta property="og:url" content="http://yoursite.com/posts/384c131e.html">
 <meta property="og:site_name" content="前端小站">
-<meta property="og:description" content="apply方法apply方法用于改变this的指向 apply的使用语法：  函数名字.apply(对象,[参数1,参数2,…]);方法名字.apply(对象,[参数1,参数2,…]);apply方法是以数组的方式传递参数">
+<meta property="og:description" content="三者的相似之处 都是用来改变函数的this对象的指向的。 第一个参数都是this要指向的对象。 都可以利用后续参数传参。">
 <meta property="article:published_time" content="2019-11-18T14:32:45.000Z">
-<meta property="article:modified_time" content="2020-02-18T12:20:55.850Z">
+<meta property="article:modified_time" content="2020-02-18T12:35:34.266Z">
 <meta property="article:author" content="丶远方">
 <meta name="twitter:card" content="summary">
 
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:20:55+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T20:35:34+08:00">
                 2020-02-18
               </time>
             
@@ -435,13 +435,15 @@
       
 
       
-        <h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2><p>apply方法用于改变this的指向</p>
-<p>apply的使用语法：</p>
+        <h2 id="三者的相似之处"><a href="#三者的相似之处" class="headerlink" title="三者的相似之处"></a>三者的相似之处</h2><ol>
+<li>都是用来改变函数的this对象的指向的。</li>
+<li>第一个参数都是this要指向的对象。</li>
+<li>都可以利用后续参数传参。<a id="more"></a>
+<h2 id="apply方法"><a href="#apply方法" class="headerlink" title="apply方法"></a>apply方法</h2>apply的使用语法：</li>
+</ol>
 <blockquote>
 <p>函数名字.apply(对象,[参数1,参数2,…]);<br>方法名字.apply(对象,[参数1,参数2,…]);<br>apply方法是以数组的方式传递参数</p>
 </blockquote>
-<a id="more"></a>
-
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取按钮</span></span><br><span class="line">		<span class="keyword">var</span> btn=<span class="built_in">document</span>.querySelectorAll(<span class="string">".btn"</span>);</span><br><span class="line">		<span class="comment">// 使用apply方法,改变Array中forEach方法的指向,循环遍历解析按钮注册点击事件</span></span><br><span class="line">		<span class="built_in">Array</span>.prototype.forEach.apply(btn,[<span class="function"><span class="keyword">function</span> (<span class="params">ele</span>) </span>&#123;</span><br><span class="line">			addEventListener(ele,<span class="string">"click"</span>,clickHandle);</span><br><span class="line">		&#125;]);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个函数</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">"我是window对象的方法:"</span>+(x+y)+<span class="keyword">this</span>.sex);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn(<span class="number">50</span>,<span class="number">60</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个对象</span></span><br><span class="line">			<span class="keyword">var</span> obj=&#123;</span><br><span class="line">				age:<span class="number">10</span>,</span><br><span class="line">				sex:<span class="string">"男"</span></span><br><span class="line">			&#125;;</span><br><span class="line">			</span><br><span class="line">			<span class="built_in">window</span>.fn.apply(obj,[<span class="number">10</span>,<span class="number">20</span>]);<span class="comment">//30男</span></span><br></pre></td></tr></table></figure></div>
 <p>无论是系统构造函数的方法，还是自己定义的函数方法，都可以通过apply方法来改变this的指向</p>
 <h2 id="call方法"><a href="#call方法" class="headerlink" title="call方法"></a>call方法</h2><p>call的使用语法：</p>
@@ -771,7 +773,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#apply方法"><span class="nav-number">1.</span> <span class="nav-text">apply方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call方法"><span class="nav-number">2.</span> <span class="nav-text">call方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind方法"><span class="nav-number">3.</span> <span class="nav-text">bind方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三者的相似之处"><span class="nav-number">1.</span> <span class="nav-text">三者的相似之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apply方法"><span class="nav-number">2.</span> <span class="nav-text">apply方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call方法"><span class="nav-number">3.</span> <span class="nav-text">call方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind方法"><span class="nav-number">4.</span> <span class="nav-text">bind方法</span></a></li></ol></div>
             
 
           </div>
