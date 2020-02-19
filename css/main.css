@@ -2115,7 +2115,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9322ff;
+  background: #29247d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -4765,14 +4765,11 @@ div.vcontrol {
   font-size: 13px;
   margin-top: 15px;
 }
-#canvas {
-  padding: 20px;
-}
 .post-block {
   background-color: rgba(255,255,255,0.8);
 }
-.vemoji-btn {
-  background-color: #fff !important;
+.site-overview {
+  text-align: center;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
