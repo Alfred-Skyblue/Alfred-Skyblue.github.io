@@ -9,8 +9,15 @@
 console.log("联系QQ:893042011");
 console.log("微信同步");
 
+
+
+
+
 +function ($) {
   'use strict';
+  
+  $(".vemoji-btn").css("opacity",0)
+  
 
   // AFFIX CLASS DEFINITION
   // ======================

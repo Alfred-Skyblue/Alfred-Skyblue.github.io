@@ -40,6 +40,36 @@
   </entry>
   
   <entry>
+    <title>CSS3 transform 中的坑</title>
+    <link href="http://yoursite.com/posts/f4adc94f.html"/>
+    <id>http://yoursite.com/posts/f4adc94f.html</id>
+    <published>2020-02-19T07:23:54.000Z</published>
+    <updated>2020-02-19T07:43:09.485Z</updated>
+    
+    <content type="html"><![CDATA[<p>transform对普通元素的影响是个巨坑，自己亲身体验的总共有三点</p><blockquote><ol><li>提升元素的垂直地位，也就是z-index会变大</li><li>改变元素的定位属性，fixed变成absolute，absolute变成relative</li><li>使绝对定位(absolute)的子元素受父元素overflow:hidden的作用。（ps:绝对定位(absolute)的子元素宽度大于父元素，如果父容器的定位是static，也就是默认时，overflow:hidden无效）</li></ol></blockquote><p style="color:red">下面我们来看一下没有没有transform属性的状态</p><p><img src="/posts/f4adc94f/no-transform.png" alt="no-transform"></p><p>再来看一下给红色框增加transform属性后的状态</p><p><img src="/posts/f4adc94f/transform.png" alt="transform"></p><p>注:<br>CSS3新增的一些属性虽然才艺高超，但是在非必要的情况下，还是尽量不要用它<br>CSS3虽好，但是不要贪杯哦</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;transform对普通元素的影响是个巨坑，自己亲身体验的总共有三点&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;提升元素的垂直地位，也就是z-index会变大&lt;/li&gt;
+&lt;li&gt;改变元素的定位属性，fixed变成absolute，absolute变成relativ
+      
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="前端踩坑记" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>构造函数（第二节）</title>
     <link href="http://yoursite.com/posts/1688ec4d.html"/>
     <id>http://yoursite.com/posts/1688ec4d.html</id>

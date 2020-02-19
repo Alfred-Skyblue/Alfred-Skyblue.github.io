@@ -2115,7 +2115,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e5a1aa;
+  background: #9322ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -4262,7 +4262,7 @@ div#comments.comments.v {
   text-align: left !important;
 }
 .v .vwrap .vedit .vctrl span {
-  background-color: #7f7f7f !important;
+  font-size: 20px;
   color: #fff !important;
   border-radius: 3px !important;
   padding: 3px !important;
@@ -4280,6 +4280,9 @@ div.vedit {
 }
 div.vcontrol {
   margin-top: 30px;
+}
+.v .vwrap .vedit .vctrl .vpreview-btn {
+  display: none;
 }
 .v .veditor {
   min-height: 70px !important;
@@ -4767,6 +4770,9 @@ div.vcontrol {
 }
 .post-block {
   background-color: rgba(255,255,255,0.8);
+}
+.vemoji-btn {
+  background-color: #fff !important;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
