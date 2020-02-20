@@ -6,18 +6,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
-console.log("联系QQ:893042011");
-console.log("微信同步");
-
-
-
-
 
 +function ($) {
   'use strict';
   
-  $(".vemoji-btn").css("opacity",0)
-  
+  console.log("联系QQ:893042011");
+  console.log("微信同步,邮箱同步");
 
   // AFFIX CLASS DEFINITION
   // ======================
