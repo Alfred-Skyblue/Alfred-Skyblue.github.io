@@ -2311,7 +2311,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1baf2d;
+  background: #3930ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3641,6 +3641,7 @@ a.my-post-title-link:before {
   margin-left: 25px;
   font-size: 16px;
   transition-duration: 0.15s;
+  background-image: linear-gradient(to right, #fffed4, #fffede, #fdffe2, #f7ffec, #ecfaf3, #f1fffd, #fafbff, #f7fffc, #fffee4);
 }
 @media (max-width: 767px) {
   .my-post:hover {
@@ -4141,7 +4142,6 @@ span.focus-links:hover {
 .site-meta .site-title {
   font-size: 28px;
   font-family: 'Comic Sans MS', sans-serif;
-  color: #fff;
 }
 .footer-inner {
   font-family: 'Comic Sans MS', sans-serif;
@@ -4678,12 +4678,32 @@ ol {
   content: counter(ol-li);
   counter-increment: ol-li;
 }
-#posts .post-type-normal {
-  background: rgba(255,255,255,0.8);
-}
 #gzdiv {
   width: 300px;
   height: 50px;
+}
+.site-title {
+  background-image: linear-gradient(to right, #ff4500, #ffa500, #ffd700, #90ee90, #0ff, #1e90ff, #9370db, #ff69b4, #ff4500);
+  background-size: 110vw;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
+  animation: sliding 30s linear infinite;
+}
+.site-meta,
+.site-subtitle {
+  color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
+  animation: hue 1.5s linear infinite;
+  background-image: linear-gradient(to right bottom, #f00, #ff8000, #ff0, #0f0, #00ff80, #0ff, #0080ff, #00f, #8000ff, #f0f, #ff0080);
+  -webkit-background-clip: text;
+}
+.site-meta {
+  background: #ecf9f8;
+}
+@media (max-width: 767px) {
+  .site-meta {
+    padding: 10px 0;
+    background-image: linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%) !important;
+  }
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
@@ -4803,5 +4823,57 @@ ol {
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
+  }
+}
+@-moz-keyframes sliding {
+  to {
+    background-position: -2000vw;
+  }
+}
+@-webkit-keyframes sliding {
+  to {
+    background-position: -2000vw;
+  }
+}
+@-o-keyframes sliding {
+  to {
+    background-position: -2000vw;
+  }
+}
+@keyframes sliding {
+  to {
+    background-position: -2000vw;
+  }
+}
+@-moz-keyframes hue {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}
+@-webkit-keyframes hue {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}
+@-o-keyframes hue {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}
+@keyframes hue {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(-360deg);
   }
 }
