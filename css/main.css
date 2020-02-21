@@ -2311,7 +2311,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b3ffc9;
+  background: #ffff5e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3732,7 +3732,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
-  background-size: 100%;
 }
 .posts-expand .post-comments-count {
   display: none;
@@ -4603,10 +4602,10 @@ a {
   }
 }
 .carousel-control .glyphicon-chevron-left {
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 15px 15px 0;
 }
 .carousel-control .glyphicon-chevron-right {
-  border-radius: 5px 0 0 5px;
+  border-radius: 15px 0 0 15px;
 }
 .posts-expand .post-body h1,
 .posts-expand .post-body h2,
