@@ -51,7 +51,7 @@
 <p>Last-Modified与ETag是可以一起使用的，服务器会优先验证ETag，一致的情况下，才会继续比对Last-Modified，最后才决定是否返回304。</p>
 </blockquote>
 <ul>
-<li>请求过程总结：<br><img src="http://q61y3rbwd.bkt.clouddn.com/gaishu.webp" alt></li>
+<li>请求过程总结：<br><img src="http://q61y3rbwd.bkt.clouddn.com/modified.webp" alt></li>
 </ul>
 <h2 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h2><ul>
 <li><p>DOM树:<br>解析 HTML 以创建的是 DOM 树（DOM tree ）：渲染引擎开始解析 HTML 文档，转换树中的标签到 DOM 节点，它被称为“内容树”。</p>
