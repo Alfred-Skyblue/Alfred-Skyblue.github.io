@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS数组常用技巧</title>
+    <url>/posts/133a37.html</url>
+    <content><![CDATA[<p><canter>你必须知道的JS数组技巧</canter></p>
+<p>在Javascript中，数组是一个重要且常见的知识点，我们经常将数据存储在数组中。作为一名Javascript工程师，数组必须要运用自如。这篇文章，向大家展示了在日常开发中，数组有哪些奇淫技巧值得关注和学习，让我们开始吧！</p>
+<h2 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h2><p>怎么对JS的数组去重。在ES6的时代，有个非常快速且简单的方法，使用<code>new Set()</code>以及<code>Array.from()</code>或者<code>展开运算符(...)</code></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'watermelon'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'grape'</span>, <span class="string">'apple'</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法一</span></span><br><span class="line"><span class="keyword">var</span> uniqueFruits = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(fruits));</span><br><span class="line"><span class="built_in">console</span>.log(uniqueFruits); <span class="comment">// returns ['banana', 'apple', 'orange', 'watermelon', 'grape']</span></span><br><span class="line"><span class="comment">// 方法二</span></span><br><span class="line"><span class="keyword">var</span> uniqueFruits2 = […<span class="keyword">new</span> <span class="built_in">Set</span>(fruits)];</span><br><span class="line"><span class="built_in">console</span>.log(uniqueFruits2); <span class="comment">// returns ['banana', 'apple', 'orange', 'watermelon', 'grape']</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><p>日常开发中经常需要替换或者删除一些指定的数据，遇到这种场景时一定要联想到<code>Array.protoType.splice</code>这个方法。传参时稍微复杂点，第一个参数是开始的索引，第二个参数是需要删除的数量，剩下的就是需要添加的值（可以是一个或者多个）。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'watermelon'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'grape'</span>, <span class="string">'apple'</span>];</span><br><span class="line">fruits.splice(<span class="number">0</span>, <span class="number">2</span>, <span class="string">'potato'</span>, <span class="string">'tomato'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fruits); <span class="comment">// returns ['potato', 'tomato', 'orange', 'watermelon', 'apple', 'orange', 'grape', 'apple']</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="清空数组"><a href="#清空数组" class="headerlink" title="清空数组"></a>清空数组</h2><p>有时我们需要清空一个数组，比如用户点击了清空购物车。可以一条一条地删除，但是很少有这么可爱的程序员，哈哈。其实一行代码就能搞定，那就是直接将之length设置成0</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'watermelon'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'grape'</span>, <span class="string">'apple'</span>];</span><br><span class="line"></span><br><span class="line">fruits.length = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(fruits); <span class="comment">// returns []</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="数组转换成对象"><a href="#数组转换成对象" class="headerlink" title="数组转换成对象"></a>数组转换成对象</h2><p>有时候需要将数组转换成对象的形式，使用<code>.map()</code>一类的迭代方法能达到目的，这里还有个更快的方法，前提是你正好希望对象的key就是数组的索引</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'watermelon'</span>];</span><br><span class="line"><span class="keyword">var</span> fruitsObj = &#123; …fruits &#125;;</span><br><span class="line"><span class="built_in">console</span>.log(fruitsObj); <span class="comment">// returns &#123;0: 'banana', 1: 'apple', 2: 'orange', 3: 'watermelon', 4: 'apple', 5: 'orange', 6: 'grape', 7: 'apple'&#125;</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="填充数组"><a href="#填充数组" class="headerlink" title="填充数组"></a>填充数组</h2><p>创建数组的时候，你有没有遇到过需要填充上默认值的场景，你肯定首先想到的就是循环这个数组。ES6提供了更便捷的<code>fill</code>方法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> newArray = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>).fill(<span class="string">'1'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(newArray); <span class="comment">// returns ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h2><p>你知道如何合并数组吗，答案就是<code>concat()</code>。哈哈，但是今天的主角是ES6的展开运算符<code>(...)</code></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'orange'</span>];</span><br><span class="line"><span class="keyword">var</span> meat = [<span class="string">'poultry'</span>, <span class="string">'beef'</span>, <span class="string">'fish'</span>];</span><br><span class="line"><span class="keyword">var</span> vegetables = [<span class="string">'potato'</span>, <span class="string">'tomato'</span>, <span class="string">'cucumber'</span>];</span><br><span class="line"><span class="keyword">var</span> food = […fruits, …meat, …vegetables];</span><br><span class="line"><span class="built_in">console</span>.log(food); <span class="comment">// ['apple', 'banana', 'orange', 'poultry', 'beef', 'fish', 'potato', 'tomato', 'cucumber']</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="两个数组的交集"><a href="#两个数组的交集" class="headerlink" title="两个数组的交集"></a>两个数组的交集</h2><p>方法很多，这里直接上最简洁的方法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> numOne = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> numTwo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> duplicatedValues = […<span class="keyword">new</span> <span class="built_in">Set</span>(numOne)].filter(<span class="function"><span class="params">item</span> =&gt;</span> numTwo.includes(item));</span><br><span class="line"><span class="built_in">console</span>.log(duplicatedValues); <span class="comment">// returns [2, 4, 6]</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="去除假值"><a href="#去除假值" class="headerlink" title="去除假值"></a>去除假值</h2><p>首先，我们熟悉下假值<code>(falsy values)</code>是什么？在JS中，假值有：<code>false、0、&#39;&#39;、null、NaN、undefined</code>。现在我们找到这些假值并将它们移除，这里使用的是<code>filter</code>方法</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> mixedArr = [<span class="number">0</span>, <span class="string">'blue'</span>, <span class="string">''</span>, <span class="literal">NaN</span>, <span class="number">9</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="string">'white'</span>, <span class="literal">false</span>];</span><br><span class="line"><span class="keyword">var</span> trueArr = mixedArr.filter(<span class="built_in">Boolean</span>);</span><br><span class="line"><span class="built_in">console</span>.log(trueArr); <span class="comment">// returns ['blue', 9, true, 'white']</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="随机值"><a href="#随机值" class="headerlink" title="随机值"></a>随机值</h2><p>从数组中获取随机的一个值，核心知识是随机生成一个值x,x &gt;= 0 并且 x &lt; 数组的length</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'blue'</span>, <span class="string">'white'</span>, <span class="string">'green'</span>, <span class="string">'navy'</span>, <span class="string">'pink'</span>, <span class="string">'purple'</span>, <span class="string">'orange'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'brown'</span>];</span><br><span class="line"><span class="keyword">var</span> randomColor = colors[(<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (colors.length)))]</span><br></pre></td></tr></table></figure></div>
+<h2 id="倒序"><a href="#倒序" class="headerlink" title="倒序"></a>倒序</h2><p>怎么对数组进行倒序？只需要一行代码</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'blue'</span>, <span class="string">'white'</span>, <span class="string">'green'</span>, <span class="string">'navy'</span>, <span class="string">'pink'</span>, <span class="string">'purple'</span>, <span class="string">'orange'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'brown'</span>];</span><br><span class="line"><span class="keyword">var</span> reversedColors = colors.reverse();</span><br><span class="line"><span class="comment">// 或者 colors.slice().reverse();</span></span><br><span class="line"><span class="comment">// 两者有啥区别？</span></span><br><span class="line"><span class="built_in">console</span>.log(reversedColors); <span class="comment">// returns ['brown', 'black', 'yellow', 'orange', 'purple', 'pink', 'navy', 'green', 'white', 'blue']</span></span><br></pre></td></tr></table></figure></div>
+<h2 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf()"></a>lastIndexOf()</h2><p>很多时候我们查找元素是否存在于某个数组中，经常使用<code>indexOf</code>方法，常常忽略<code>lastIndexOf</code>方法，后者会被使用的一个场景就是，某个数组中有重复的数据。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>];</span><br><span class="line"><span class="keyword">var</span> lastIndex = nums.lastIndexOf(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(lastIndex); <span class="comment">// returns 9</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h2><p>答案也是很多，条条大道通罗马，这里使用的是<code>reduce</code>，<code>reduce</code>方法是很值得学习的知识点，用处很多。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nums = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> sum = nums.reduce(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y);</span><br><span class="line"><span class="built_in">console</span>.log(sum); <span class="comment">// returns 14</span></span><br></pre></td></tr></table></figure></div>
+
+<p>本文主要列举了一些简洁的方法，实现方法很多，不在此一一列举<br>未完待续…</p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>页面性能优化</title>
     <url>/posts/d333b549.html</url>
     <content><![CDATA[<p><canter>优化前端性能，提升用户体验，一直是从事前端工作人员必须考虑的问题，之前参考过很多资料，大多说的不是很详细，重点描述的也不是很到位，鄙人不才，愿集百家之所长，供大家参考(其实大概意思就是本文非本人原创，都是参考自别人的资料，由于资源来自四面八方，就不在这里一一列举了)</canter></p>
@@ -121,7 +163,48 @@
       </tags>
   </entry>
   <entry>
-    <title>构造函数（第二节）</title>
+    <title>Vue生命周期详解</title>
+    <url>/posts/6f7db675.html</url>
+    <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
+<a id="more"></a>
+<p><img src="http://q61l3an3n.bkt.clouddn.com/1700fc5ba6a36e6c%20%281%29.png" alt="生命周期图"></p>
+<center><font color="#ccc">生命周期图</font> </center>
+
+<hr>
+<p><img src="/posts/6f7db675/vue2.jpg" alt></p>
+<ul>
+<li><p>beforeCreate(创建前)<br>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p>
+</li>
+<li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
+</li>
+<li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>
+</li>
+<li><p>mounted<br>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p>
+</li>
+<li><p>beforeUpdate<br>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
+</li>
+<li><p>updated(更新后)<br>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p>
+</li>
+<li><p>beforeDestrioy(销毁前)<br>在实例销毁之前调用，实例仍然完全可用，</p>
+</li>
+</ul>
+<ol>
+<li>这一步还可以用this来获取实例</li>
+<li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li>
+</ol>
+<ul>
+<li>destroyed(销毁后)<br>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>构造函数</title>
     <url>/posts/1688ec4d.html</url>
     <content><![CDATA[<p>摘要内容</p>
 <h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数是一种特殊的函数，主要用来初始化对象，即为对<br>象成员变量赋初始值，它总与new一起使用。我们可以把对象<br>中一些公共的属性和方法抽取出来，然后封装到这个函数里面。</p>
@@ -235,7 +318,115 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript运行机制</title>
+    <title>Promise</title>
+    <url>/posts/54b11a0c.html</url>
+    <content><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><blockquote>
+<p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
+</blockquote>
+<h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
+<a id="more"></a>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">  fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">    fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<p>终于，我们的<code>盖世英雄</code>出现了，他身披金甲圣衣、驾着七彩祥云。好吧打岔儿了，没错他就是我们的<code>Promise</code>，那让我们来看看用了<code>Promise</code>之后，上面的代码会变成什么样吧</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.readFile(url,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,data</span>)</span>&#123;</span><br><span class="line">      error &amp;&amp; reject(error)</span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read(<span class="string">'./a.txt'</span>).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data) </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data)  </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>如上所示</p>
+<hr>
+<h2 id="2-重点开始，小眼睛都看过来"><a href="#2-重点开始，小眼睛都看过来" class="headerlink" title="2.重点开始，小眼睛都看过来"></a>2.重点开始，小眼睛都看过来</h2><h3 id="2-1constructor"><a href="#2-1constructor" class="headerlink" title="2.1constructor"></a>2.1constructor</h3><p>我们先声明一个类，叫做<code>Promise</code>，里面是构造函数。如果es6还有问题的可以去阮大大的博客上学习一下（传送门☞<a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">es6</a>）</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Promise</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(executor)&#123;</span><br><span class="line">    <span class="comment">//控制状态，使用了一次之后，接下来的都不被使用</span></span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'pendding'</span></span><br><span class="line">    <span class="keyword">this</span>.value = <span class="literal">undefined</span></span><br><span class="line">    <span class="keyword">this</span>.reason = <span class="literal">undefined</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义resolve函数</span></span><br><span class="line">    <span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//这里pendding，主要是为了防止executor中调用了两次resovle或reject方法，而我们只调用一次</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">        <span class="keyword">this</span>.value = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义reject函数</span></span><br><span class="line">    <span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">        <span class="keyword">this</span>.reason = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//executor方法可能会抛出异常，需要捕获</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="comment">//将resolve和reject函数给使用者      </span></span><br><span class="line">      executor(resolve,reject)      </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">      <span class="comment">//如果在函数中抛出异常则将它注入reject中</span></span><br><span class="line">      reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>那么接下来我会分析一下上面代码的作用，原理：</p>
+</blockquote>
+<ul>
+<li><p><code>executor</code>：这是实例<code>Promise</code>对象时在构造器中传入的参数，一般是一个<code>function(resolve,reject){}</code></p>
+</li>
+<li><p><code>status：Promise</code>的状态，一开始是默认的pendding状态，每当调用道resolve和reject方法时，就会改变其值，在后面的then方法中会用到</p>
+</li>
+<li><p><code>value：resolve</code>回调成功后，调用resolve方法里面的参数值</p>
+</li>
+<li><p><code>reason：reject</code>回调成功后，调用reject方法里面的参数值</p>
+</li>
+<li><p><code>resolve：</code>声明resolve方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
+</li>
+<li><p><code>reject：</code>声明reject方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
+</li>
+</ul>
+<h3 id="2-2-then"><a href="#2-2-then" class="headerlink" title="2.2 then"></a>2.2 then</h3><p><code>then</code>方法是<code>Promise</code>中最为重要的方法，他的用法大家都应该已经知道，就是将<code>Promise</code>中的<code>resolve</code>或者<code>reject</code>的结果拿到，那么我们就能知道这里的<code>then</code>方法需要两个参数，成功回调和失败回调，上代码！</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">then(onFufilled,onRejected)&#123;  </span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'resolve'</span>)&#123;</span><br><span class="line">    onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'reject'</span>)&#123;</span><br><span class="line">    onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里主要做了将构造器中resolve和reject的结果传入<code>onFufilled</code>和<code>onRejected</code>中，注意这两个是使用者传入的参数，是个方法。所以你以为这么简单就完了？要想更Swag的应对各种场景，我们必须得再完善。继续往下走！</p>
+<h2 id="3-异步的Promise"><a href="#3-异步的Promise" class="headerlink" title="3.异步的Promise"></a>3.异步的Promise</h2><p>之前我们只是处理了同步情况下的Promise，简而言之所有操作都没有异步的成分在内。那么如果是异步该怎么办？</p>
+<h3 id="3-1-callback"><a href="#3-1-callback" class="headerlink" title="3.1 callback"></a>3.1 callback</h3><blockquote>
+<p>最早处理异步的方法就是callback，就相当于我让你帮我扫地，我会在给你发起任务时给你一个手机，之后我做自己的事情去，不用等你，等你扫完地就会打手机给我，诶，我就知道了地扫完了。这个手机就是callback，回调函数。</p>
+</blockquote>
+<p>首先我们需要改一下构造器里的代码，分别添加两个回调函数的数组，分别对应成功回调和失败回调。他们的作用是当成功执行resolve或reject时，执行callback。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//存放成功回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onResolvedCallbacks = []</span><br><span class="line"><span class="comment">//存放失败回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onRejectedCallbacks = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">    <span class="keyword">this</span>.value = data</span><br><span class="line">    <span class="comment">//监听回调函数</span></span><br><span class="line">    <span class="keyword">this</span>.onResolvedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">    <span class="keyword">this</span>.reason = data</span><br><span class="line">    <span class="keyword">this</span>.onRejectedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<p>然后是then需要多加一个状态判断，当Promise中是异步操作时，需要在我们之前定义的回调函数数组中添加一个回调函数。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'pendding'</span>)&#123;</span><br><span class="line">  <span class="keyword">this</span>.onResolvedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// to do....</span></span><br><span class="line">    <span class="keyword">let</span> x = onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">this</span>.onRejectedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> x = onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>ok！大功告成，异步已经解决了</p>
+<h3 id="3-2-Promise-resolve"><a href="#3-2-Promise-resolve" class="headerlink" title="3.2 Promise.resolve"></a>3.2 Promise.resolve</h3><blockquote>
+<p>一般情况下我们都会使用new Promise（）来创建Promise对象，但是除此之外我们也可以使用其他方法。</p>
+</blockquote>
+<p>静态方法<code>Promise.resolve(value)</code>可以认为是<code>new Promise()</code>方法的快捷方式。</p>
+<p>比如Promise.resolve(20)可以认为是以下代码的语法糖。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">				resolve(<span class="number">20</span>)</span><br><span class="line">			&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+
+
+
+<h2 id="4-完善Promise"><a href="#4-完善Promise" class="headerlink" title="4.完善Promise"></a>4.完善Promise</h2><blockquote>
+<p>我们现在已经基本完成了<code>Promise</code>的<code>then</code>方法，那么现在我们需要看看他的其他方法。</p>
+</blockquote>
+<h3 id="4-1-catch"><a href="#4-1-catch" class="headerlink" title="4.1 catch"></a>4.1 catch</h3><p>相信大家都知道catch这个方法是用来捕获Promise中的reject的值，也就是相当于then方法中的onRejected回调函数，那么问题就解决了。我们来看代码。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//catch方法</span></span><br><span class="line"><span class="keyword">catch</span>(onRejected)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.then(<span class="literal">null</span>,onRejected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>该方法是挂在Promise原型上的方法。当我们调用catch传callback的时候，就相当于是调用了then方法。</p>
+</blockquote>
+<h3 id="4-2-resolve-reject"><a href="#4-2-resolve-reject" class="headerlink" title="4.2 resolve/reject"></a>4.2 resolve/reject</h3><p>大家一定都看到过<code>Promise.resolve()</code>、<code>Promise.reject()</code>这两种用法，它们的作用其实就是返回一个Promise对象，我们来实现一下。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//resolve方法</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    resolve(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//reject方法</span></span><br><span class="line"><span class="built_in">Promise</span>.reject = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    reject(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>这两个方法是直接可以通过class调用的，原理就是返回一个内部是resolve或reject的Promise对象。</p>
+</blockquote>
+<h3 id="4-3-all"><a href="#4-3-all" class="headerlink" title="4.3 all"></a>4.3 all</h3><p>Promise.all 生成并返回一个新的Promise对象，所以它可以使用Promise实例的所有方法。参数传递promise数组中所有的Promise对象都变为resolve的时候，该方法才会返回，新创建的Promise则会使用这些promise的值。</p>
+<p>如果参数中的任何一个Promise为reject的话，则整个Promise.all调用会立即终止，并返回一个reject的新的Promise对象。</p>
+<p>由于参数数组中的每个元素都是由Promise.resolve包装（wrap）的，所以Promose.all可以处理不同类型的Promose对象。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">const</span> p3 = <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// [1,2,3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>其原理就是将参数中的数组取出遍历，每当执行成功都会执行processData方法，processData方法就是用来记录每个Promise的值和它对应的下标，当执行的次数等于数组长度时就会执行resolve，把arr的值给then。这里会有一个坑，如果你是通过arr数组的长度来判断他是否应该resolve的话就会出错，为什么呢？因为js数组的特性，导致如果先出来的是1位置上的值进arr，那么0位置上也会多一个空的值，所以不合理。</p>
+</blockquote>
+<h3 id="4-4-race"><a href="#4-4-race" class="headerlink" title="4.4 race"></a>4.4 race</h3><p>Promise.race 生成并返回一个新的Promise对象。<br>参数Promise数组中的任何一个Promise 对象如果变为resolve 或者reject的话，该函数就会返回，并使用这个Promise 对象的值进行resolve 或者reject。</p>
+<p>注：Promise.race方法只会执行第一个返回的Promise对象</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//race方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">1</span>)</span><br><span class="line">    &#125;, <span class="number">5000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">2</span>)</span><br><span class="line">    &#125;, <span class="number">3000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([p1(), p2()]).then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// 三秒钟后打印2</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+<h2 id="Promise语法糖-deferred"><a href="#Promise语法糖-deferred" class="headerlink" title="Promise语法糖 deferred"></a>Promise语法糖 deferred</h2><p>语法糖这三个字大家一定很熟悉，作为一个很Swag的前端工程师，对<code>async/await</code>这对兄弟肯定很熟悉，没错他们就是<code>generator</code>的语法糖。而我们这里要讲的语法糖是Promise的。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//promise语法糖 也用来测试</span></span><br><span class="line"><span class="built_in">Promise</span>.deferred = <span class="built_in">Promise</span>.defer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dfd = &#123;&#125;</span><br><span class="line">  dfd.promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    dfd.resolve = resolve</span><br><span class="line">    dfd.reject = reject</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> dfd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>什么作用呢？看下面代码你就知道了</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'./promises'</span>)</span><br><span class="line"><span class="comment">//Promise上的语法糖，为了防止嵌套，方便调用</span></span><br><span class="line"><span class="comment">//坏处 错误处理不方便</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> defer = <span class="built_in">Promise</span>.defer()</span><br><span class="line">  fs.readFile(<span class="string">'./1.txt'</span>,<span class="string">'utf8'</span>,(err,data)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)defer.reject(err)</span><br><span class="line">    defer.resolve(data)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> defer.Promise</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+<blockquote>
+<p>没错，我们可以方便的去调用他语法糖defer中的Promise对象。那么它还有没有另外的方法呢？答案是有的。我们需要在全局上安装promises-aplus-tests插件npm i promises-aplus-tests -g，再输入promises-aplus-tests [js文件名] 即可验证你的Promise的规范。</p>
+</blockquote>
+<p>文章非本人原创，由于原文很多代码比较复杂，本人做了一些简化，看起来容易理解一些，不过没有原文那么详细，知识不问出处，请珍惜他人劳动成果<br>原文地址<a href="https://juejin.im/post/5b32f552f265da59991155f0" target="_blank" rel="noopener">掘金大咖</a></p>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS运行机制</title>
     <url>/posts/6fdc6fb4.html</url>
     <content><![CDATA[<h2 id="一、引子"><a href="#一、引子" class="headerlink" title="一、引子"></a>一、引子</h2><p>本文介绍JavaScript运行机制，这一部分比较抽象，我们先从一道面试题入手：</p>
 <a id="more"></a>
@@ -397,48 +588,7 @@
       </categories>
   </entry>
   <entry>
-    <title>Vue生命周期详解</title>
-    <url>/posts/6f7db675.html</url>
-    <content><![CDATA[<p>Vue实例有一个完整的生命周期，也就是说从开始创建、初始化数据、编译模板、挂在DOM、渲染-更新-渲染、卸载等一系列过程，我们成为Vue 实例的生命周期，钩子就是在某个阶段给你一个做某些处理的机会。</p>
-<a id="more"></a>
-<p><img src="http://q61l3an3n.bkt.clouddn.com/1700fc5ba6a36e6c%20%281%29.png" alt="生命周期图"></p>
-<center><font color="#ccc">生命周期图</font> </center>
-
-<hr>
-<p><img src="/posts/6f7db675/vue2.jpg" alt></p>
-<ul>
-<li><p>beforeCreate(创建前)<br>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p>
-</li>
-<li><p>created(创建后)<br>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p>
-</li>
-<li><p>beforeMount<br>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p>
-</li>
-<li><p>mounted<br>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p>
-</li>
-<li><p>beforeUpdate<br>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p>
-</li>
-<li><p>updated(更新后)<br>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p>
-</li>
-<li><p>beforeDestrioy(销毁前)<br>在实例销毁之前调用，实例仍然完全可用，</p>
-</li>
-</ul>
-<ol>
-<li>这一步还可以用this来获取实例</li>
-<li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li>
-</ol>
-<ul>
-<li>destroyed(销毁后)<br>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>apply、call和bind方法</title>
+    <title>JavaScript/apply、call和bind方法</title>
     <url>/posts/384c131e.html</url>
     <content><![CDATA[<h2 id="三者的相似之处"><a href="#三者的相似之处" class="headerlink" title="三者的相似之处"></a>三者的相似之处</h2><ol>
 <li>都是用来改变函数的this对象的指向的。</li>
@@ -471,114 +621,6 @@
 ]]></content>
       <categories>
         <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Promise</title>
-    <url>/posts/54b11a0c.html</url>
-    <content><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><blockquote>
-<p>Promise出现的本质是为了解决异步函数回调地狱的问题</p>
-</blockquote>
-<h2 id="1-回调地狱"><a href="#1-回调地狱" class="headerlink" title="1.回调地狱"></a>1.回调地狱</h2><p>曾几何时，我们的代码是这样的，为了拿到回调的结果，不得不<code>callback hell</code>，这种环环相扣的代码可以说是相当恶心了</p>
-<a id="more"></a>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./a.txt'</span>,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">  fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">    fs.readFile(data,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-<p>终于，我们的<code>盖世英雄</code>出现了，他身披金甲圣衣、驾着七彩祥云。好吧打岔儿了，没错他就是我们的<code>Promise</code>，那让我们来看看用了<code>Promise</code>之后，上面的代码会变成什么样吧</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    fs.readFile(url,<span class="string">'utf8'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">error,data</span>)</span>&#123;</span><br><span class="line">      error &amp;&amp; reject(error)</span><br><span class="line">      resolve(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">read(<span class="string">'./a.txt'</span>).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data) </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> read(data)  </span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-<p>如上所示</p>
-<hr>
-<h2 id="2-重点开始，小眼睛都看过来"><a href="#2-重点开始，小眼睛都看过来" class="headerlink" title="2.重点开始，小眼睛都看过来"></a>2.重点开始，小眼睛都看过来</h2><h3 id="2-1constructor"><a href="#2-1constructor" class="headerlink" title="2.1constructor"></a>2.1constructor</h3><p>我们先声明一个类，叫做<code>Promise</code>，里面是构造函数。如果es6还有问题的可以去阮大大的博客上学习一下（传送门☞<a href="http://es6.ruanyifeng.com" target="_blank" rel="noopener">es6</a>）</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Promise</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(executor)&#123;</span><br><span class="line">    <span class="comment">//控制状态，使用了一次之后，接下来的都不被使用</span></span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'pendding'</span></span><br><span class="line">    <span class="keyword">this</span>.value = <span class="literal">undefined</span></span><br><span class="line">    <span class="keyword">this</span>.reason = <span class="literal">undefined</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义resolve函数</span></span><br><span class="line">    <span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//这里pendding，主要是为了防止executor中调用了两次resovle或reject方法，而我们只调用一次</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">        <span class="keyword">this</span>.value = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义reject函数</span></span><br><span class="line">    <span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">        <span class="keyword">this</span>.reason = data</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//executor方法可能会抛出异常，需要捕获</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="comment">//将resolve和reject函数给使用者      </span></span><br><span class="line">      executor(resolve,reject)      </span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">      <span class="comment">//如果在函数中抛出异常则将它注入reject中</span></span><br><span class="line">      reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-<blockquote>
-<p>那么接下来我会分析一下上面代码的作用，原理：</p>
-</blockquote>
-<ul>
-<li><p><code>executor</code>：这是实例<code>Promise</code>对象时在构造器中传入的参数，一般是一个<code>function(resolve,reject){}</code></p>
-</li>
-<li><p><code>status：Promise</code>的状态，一开始是默认的pendding状态，每当调用道resolve和reject方法时，就会改变其值，在后面的then方法中会用到</p>
-</li>
-<li><p><code>value：resolve</code>回调成功后，调用resolve方法里面的参数值</p>
-</li>
-<li><p><code>reason：reject</code>回调成功后，调用reject方法里面的参数值</p>
-</li>
-<li><p><code>resolve：</code>声明resolve方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
-</li>
-<li><p><code>reject：</code>声明reject方法在构造器内，通过传入的executor方法传入其中，用以给使用者回调</p>
-</li>
-</ul>
-<h3 id="2-2-then"><a href="#2-2-then" class="headerlink" title="2.2 then"></a>2.2 then</h3><p><code>then</code>方法是<code>Promise</code>中最为重要的方法，他的用法大家都应该已经知道，就是将<code>Promise</code>中的<code>resolve</code>或者<code>reject</code>的结果拿到，那么我们就能知道这里的<code>then</code>方法需要两个参数，成功回调和失败回调，上代码！</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">then(onFufilled,onRejected)&#123;  </span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'resolve'</span>)&#123;</span><br><span class="line">    onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'reject'</span>)&#123;</span><br><span class="line">    onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>这里主要做了将构造器中resolve和reject的结果传入<code>onFufilled</code>和<code>onRejected</code>中，注意这两个是使用者传入的参数，是个方法。所以你以为这么简单就完了？要想更Swag的应对各种场景，我们必须得再完善。继续往下走！</p>
-<h2 id="3-异步的Promise"><a href="#3-异步的Promise" class="headerlink" title="3.异步的Promise"></a>3.异步的Promise</h2><p>之前我们只是处理了同步情况下的Promise，简而言之所有操作都没有异步的成分在内。那么如果是异步该怎么办？</p>
-<h3 id="3-1-callback"><a href="#3-1-callback" class="headerlink" title="3.1 callback"></a>3.1 callback</h3><blockquote>
-<p>最早处理异步的方法就是callback，就相当于我让你帮我扫地，我会在给你发起任务时给你一个手机，之后我做自己的事情去，不用等你，等你扫完地就会打手机给我，诶，我就知道了地扫完了。这个手机就是callback，回调函数。</p>
-</blockquote>
-<p>首先我们需要改一下构造器里的代码，分别添加两个回调函数的数组，分别对应成功回调和失败回调。他们的作用是当成功执行resolve或reject时，执行callback。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//存放成功回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onResolvedCallbacks = []</span><br><span class="line"><span class="comment">//存放失败回调的函数</span></span><br><span class="line"><span class="keyword">this</span>.onRejectedCallbacks = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> resolve = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'resolve'</span></span><br><span class="line">    <span class="keyword">this</span>.value = data</span><br><span class="line">    <span class="comment">//监听回调函数</span></span><br><span class="line">    <span class="keyword">this</span>.onResolvedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> reject = <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.status===<span class="string">'pendding'</span>)&#123;</span><br><span class="line">    <span class="keyword">this</span>.status = <span class="string">'reject'</span>        </span><br><span class="line">    <span class="keyword">this</span>.reason = data</span><br><span class="line">    <span class="keyword">this</span>.onRejectedCallbacks.forEach(<span class="function"><span class="params">fn</span>=&gt;</span>fn())</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-<p>然后是then需要多加一个状态判断，当Promise中是异步操作时，需要在我们之前定义的回调函数数组中添加一个回调函数。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.status === <span class="string">'pendding'</span>)&#123;</span><br><span class="line">  <span class="keyword">this</span>.onResolvedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// to do....</span></span><br><span class="line">    <span class="keyword">let</span> x = onFufilled(<span class="keyword">this</span>.value)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">this</span>.onRejectedCallbacks.push(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> x = onRejected(<span class="keyword">this</span>.reason)</span><br><span class="line">    resolvePromise(promise2,x,resolve,reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>ok！大功告成，异步已经解决了</p>
-<h3 id="3-2-Promise-resolve"><a href="#3-2-Promise-resolve" class="headerlink" title="3.2 Promise.resolve"></a>3.2 Promise.resolve</h3><blockquote>
-<p>一般情况下我们都会使用new Promise（）来创建Promise对象，但是除此之外我们也可以使用其他方法。</p>
-</blockquote>
-<p>静态方法<code>Promise.resolve(value)</code>可以认为是<code>new Promise()</code>方法的快捷方式。</p>
-<p>比如Promise.resolve(20)可以认为是以下代码的语法糖。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">				resolve(<span class="number">20</span>)</span><br><span class="line">			&#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-
-
-
-<h2 id="4-完善Promise"><a href="#4-完善Promise" class="headerlink" title="4.完善Promise"></a>4.完善Promise</h2><blockquote>
-<p>我们现在已经基本完成了<code>Promise</code>的<code>then</code>方法，那么现在我们需要看看他的其他方法。</p>
-</blockquote>
-<h3 id="4-1-catch"><a href="#4-1-catch" class="headerlink" title="4.1 catch"></a>4.1 catch</h3><p>相信大家都知道catch这个方法是用来捕获Promise中的reject的值，也就是相当于then方法中的onRejected回调函数，那么问题就解决了。我们来看代码。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//catch方法</span></span><br><span class="line"><span class="keyword">catch</span>(onRejected)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.then(<span class="literal">null</span>,onRejected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>该方法是挂在Promise原型上的方法。当我们调用catch传callback的时候，就相当于是调用了then方法。</p>
-</blockquote>
-<h3 id="4-2-resolve-reject"><a href="#4-2-resolve-reject" class="headerlink" title="4.2 resolve/reject"></a>4.2 resolve/reject</h3><p>大家一定都看到过<code>Promise.resolve()</code>、<code>Promise.reject()</code>这两种用法，它们的作用其实就是返回一个Promise对象，我们来实现一下。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//resolve方法</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    resolve(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//reject方法</span></span><br><span class="line"><span class="built_in">Promise</span>.reject = <span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    reject(val)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-<blockquote>
-<p>这两个方法是直接可以通过class调用的，原理就是返回一个内部是resolve或reject的Promise对象。</p>
-</blockquote>
-<h3 id="4-3-all"><a href="#4-3-all" class="headerlink" title="4.3 all"></a>4.3 all</h3><p>Promise.all 生成并返回一个新的Promise对象，所以它可以使用Promise实例的所有方法。参数传递promise数组中所有的Promise对象都变为resolve的时候，该方法才会返回，新创建的Promise则会使用这些promise的值。</p>
-<p>如果参数中的任何一个Promise为reject的话，则整个Promise.all调用会立即终止，并返回一个reject的新的Promise对象。</p>
-<p>由于参数数组中的每个元素都是由Promise.resolve包装（wrap）的，所以Promose.all可以处理不同类型的Promose对象。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//all方法(获取所有的promise，都执行then，把结果放到数组，一起返回)</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="built_in">Promise</span>.resolve(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">const</span> p3 = <span class="built_in">Promise</span>.resolve(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">Promise</span>.all([p1, p2, p3]).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// [1,2,3]</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-<blockquote>
-<p>其原理就是将参数中的数组取出遍历，每当执行成功都会执行processData方法，processData方法就是用来记录每个Promise的值和它对应的下标，当执行的次数等于数组长度时就会执行resolve，把arr的值给then。这里会有一个坑，如果你是通过arr数组的长度来判断他是否应该resolve的话就会出错，为什么呢？因为js数组的特性，导致如果先出来的是1位置上的值进arr，那么0位置上也会多一个空的值，所以不合理。</p>
-</blockquote>
-<h3 id="4-4-race"><a href="#4-4-race" class="headerlink" title="4.4 race"></a>4.4 race</h3><p>Promise.race 生成并返回一个新的Promise对象。<br>参数Promise数组中的任何一个Promise 对象如果变为resolve 或者reject的话，该函数就会返回，并使用这个Promise 对象的值进行resolve 或者reject。</p>
-<p>注：Promise.race方法只会执行第一个返回的Promise对象</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//race方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">1</span>)</span><br><span class="line">    &#125;, <span class="number">5000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(<span class="number">2</span>)</span><br><span class="line">    &#125;, <span class="number">3000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.race([p1(), p2()]).then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value)<span class="comment">// 三秒钟后打印2</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-<h2 id="Promise语法糖-deferred"><a href="#Promise语法糖-deferred" class="headerlink" title="Promise语法糖 deferred"></a>Promise语法糖 deferred</h2><p>语法糖这三个字大家一定很熟悉，作为一个很Swag的前端工程师，对<code>async/await</code>这对兄弟肯定很熟悉，没错他们就是<code>generator</code>的语法糖。而我们这里要讲的语法糖是Promise的。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//promise语法糖 也用来测试</span></span><br><span class="line"><span class="built_in">Promise</span>.deferred = <span class="built_in">Promise</span>.defer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dfd = &#123;&#125;</span><br><span class="line">  dfd.promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    dfd.resolve = resolve</span><br><span class="line">    dfd.reject = reject</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> dfd</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>什么作用呢？看下面代码你就知道了</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'./promises'</span>)</span><br><span class="line"><span class="comment">//Promise上的语法糖，为了防止嵌套，方便调用</span></span><br><span class="line"><span class="comment">//坏处 错误处理不方便</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> defer = <span class="built_in">Promise</span>.defer()</span><br><span class="line">  fs.readFile(<span class="string">'./1.txt'</span>,<span class="string">'utf8'</span>,(err,data)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)defer.reject(err)</span><br><span class="line">    defer.resolve(data)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> defer.Promise</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-<blockquote>
-<p>没错，我们可以方便的去调用他语法糖defer中的Promise对象。那么它还有没有另外的方法呢？答案是有的。我们需要在全局上安装promises-aplus-tests插件npm i promises-aplus-tests -g，再输入promises-aplus-tests [js文件名] 即可验证你的Promise的规范。</p>
-</blockquote>
-<p>文章非本人原创，由于原文很多代码比较复杂，本人做了一些简化，看起来容易理解一些，不过没有原文那么详细，知识不问出处，请珍惜他人劳动成果<br>原文地址<a href="https://juejin.im/post/5b32f552f265da59991155f0" target="_blank" rel="noopener">掘金大咖</a></p>
-]]></content>
-      <categories>
-        <category>ES6</category>
       </categories>
   </entry>
 </search>

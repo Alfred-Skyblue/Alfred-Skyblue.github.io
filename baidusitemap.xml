@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/posts/1688ec4d.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/posts/6fdc6fb4.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/posts/133a37.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/posts/6f7db675.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/posts/54b11a0c.html</loc>
+    <lastmod>2020-02-22</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/posts/d333b549.html</loc>
     <lastmod>2020-02-22</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/posts/139b1e40.html</loc>
     <lastmod>2020-02-21</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/posts/6fdc6fb4.html</loc>
-    <lastmod>2020-02-21</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/posts/6f7db675.html</loc>
-    <lastmod>2020-02-21</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/posts/f4adc94f.html</loc>
     <lastmod>2020-02-19</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/posts/384c131e.html</loc>
-    <lastmod>2020-02-18</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/posts/1688ec4d.html</loc>
-    <lastmod>2020-02-18</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/posts/54b11a0c.html</loc>
     <lastmod>2020-02-18</lastmod>
   </url>
 </urlset>
