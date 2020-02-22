@@ -2311,7 +2311,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e45b74;
+  background: #b58fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -4146,7 +4146,7 @@ span.focus-links:hover {
 .footer-inner {
   font-family: 'Comic Sans MS', sans-serif;
   text-align: center;
-  color: #4c618f;
+  color: #e88176;
 }
 .site-author-name {
   margin: 18px 0 0;
