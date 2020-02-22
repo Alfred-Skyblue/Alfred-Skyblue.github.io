@@ -2311,7 +2311,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f926c6;
+  background: #05300b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3728,7 +3728,7 @@ div.post-block.tag .collection-title h2 {
   }
 }
 body {
-  background: url("https://source.unsplash.com/random/1600x900");
+  background: url("http://q639k8z87.bkt.clouddn.com/background.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
@@ -4740,6 +4740,36 @@ ol {
 }
 .my-carousel {
   margin-bottom: 28px;
+}
+@media (min-width: 1400px) {
+  .my-carousel {
+    margin-bottom: 15px;
+  }
+  #myCarousel {
+    width: 53%;
+  }
+  .rights {
+    margin-left: 60px !important;
+  }
+}
+@media (min-width: 1600px) {
+  .my-carousel {
+    margin-bottom: 20px;
+  }
+  #myCarousel {
+    width: 45%;
+  }
+  .rights {
+    margin-left: 100px !important;
+    padding: 10px 0;
+  }
+  .rights .my-carousel {
+    height: 20%;
+  }
+  .rights .my-carousel img {
+    height: 100%;
+    width: 100%;
+  }
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
