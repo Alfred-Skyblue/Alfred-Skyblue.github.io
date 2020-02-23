@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
+    <loc>http://yoursite.com/posts/384c131e.html</loc>
     
-    <lastmod>2020-02-22T08:28:43.045Z</lastmod>
+    <lastmod>2020-02-23T11:56:23.071Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/posts/1688ec4d.html</loc>
     
-    <lastmod>2020-02-22T02:40:45.793Z</lastmod>
+    <lastmod>2020-02-23T11:56:15.789Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/posts/f4adc94f.html</loc>
+    
+    <lastmod>2020-02-23T11:56:09.116Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/posts/133a37.html</loc>
+    
+    <lastmod>2020-02-23T11:55:46.046Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/posts/d333b549.html</loc>
+    
+    <lastmod>2020-02-23T11:54:59.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/posts/383dff78.html</loc>
+    
+    <lastmod>2020-02-23T11:50:24.155Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/posts/6f7db675.html</loc>
+    
+    <lastmod>2020-02-23T11:11:18.811Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2020-02-22T08:28:43.045Z</lastmod>
     
   </url>
   
@@ -23,30 +65,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/posts/133a37.html</loc>
-    
-    <lastmod>2020-02-22T02:37:18.486Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/posts/6f7db675.html</loc>
-    
-    <lastmod>2020-02-22T01:16:39.089Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/posts/54b11a0c.html</loc>
     
     <lastmod>2020-02-22T01:16:18.140Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/posts/d333b549.html</loc>
-    
-    <lastmod>2020-02-22T01:13:55.462Z</lastmod>
     
   </url>
   
@@ -68,20 +89,6 @@
     <loc>http://yoursite.com/photos/index.html</loc>
     
     <lastmod>2020-02-20T16:21:59.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/posts/f4adc94f.html</loc>
-    
-    <lastmod>2020-02-19T07:43:09.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/posts/384c131e.html</loc>
-    
-    <lastmod>2020-02-18T12:35:34.266Z</lastmod>
     
   </url>
   
